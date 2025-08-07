@@ -1,0 +1,4 @@
+sentence_transformers
+flask
+flask_cors
+chromadb
