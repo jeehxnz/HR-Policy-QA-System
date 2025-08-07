@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask Your HR Question - bKash Employee HR Help Desk</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <a href="index.html" id="logo-link">
+        <img src="assets/bkash-logo.png" alt="bKash Logo" id="bkash-logo" />
+      </a>
+      <nav>
+        <button class="nav-button current-page" disabled>Ask a Question</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="query-section">
+      <div class="container query-container">
+        <h2>Ask Your HR Question</h2>
+        <p>Type your question about bKash HR policies below:</p>
+        <textarea id="question-box" placeholder="e.g., What is the mission of bKash?"></textarea>
+        <button id="submit-question" class="cta-button">Get Answer</button>
+
+        <div id="loading-state" style="display: none; text-align: center; margin-top: 20px;">
+          <div class="spinner"></div>
+          <p style="margin-top: 10px; color: #888;">Getting your answer...</p>
+        </div>
+
+        <div id="error-state" class="error-container" style="display: none; margin-top: 20px;">
+            <h3>Error:</h3>
+            <div id="error-text"></div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 bKash. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="answer-modal" class="modal">
+    <div class="modal-content answer-container">
+      <span class="close-button">&times;</span>
+      <h3>Answer:</h3>
+      <div id="modal-answer-text" class="answer-content"></div>
+      <div id="modal-source-info" style="margin-top: 15px; font-size: 0.95rem; color: #555; display: none;">
+        <h4>Source Documents:</h4>
+        <ul id="modal-source-list" style="list-style: none; padding: 0;"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
