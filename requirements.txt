@@ -1,4 +1,6 @@
 sentence_transformers
 flask
 flask_cors
+pandas
+gunicorn
 chromadb
