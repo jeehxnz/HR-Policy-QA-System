@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - **Project Structure**: Reorganized files into logical directories:
-  - `backend/` - Flask API and backend logic
+  - `src/` - Flask API and backend logic
   - `frontend/` - Static web interface
   - `ingestion/` - Data processing scripts
 - **Configuration**: Added environment variable support for all configurable settings
@@ -41,6 +41,7 @@ All notable changes to this project will be documented in this file.
   - `python-3.13.3-amd64.exe` (Windows installer)
   - `Q_A_bKash.ipynb` (Colab notebook)
 - **Empty Directories**: Removed empty `Backend/` directory
+- **Directory Restructure**: Moved backend files from `backend/` to `src/` for better git tracking
 
 ### Fixed
 - **Path Issues**: Fixed data path casing that would break on case-sensitive filesystems

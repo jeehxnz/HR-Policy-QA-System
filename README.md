@@ -49,13 +49,13 @@ This system provides bKash employees with instant, accurate answers to HR policy
 
 5. Ingest data (if using provided data):
    ```bash
-   cd backend
+   cd src
    python ingest_data.py
    ```
 
 6. Start the API:
    ```bash
-   cd backend
+   cd src
    python app.py
    ```
 
@@ -67,7 +67,7 @@ This system provides bKash employees with instant, accurate answers to HR policy
 
 ```
 HR-Policy-QA-System/
-├── backend/                 # Flask API and backend logic
+├── src/                    # Flask API and backend logic
 │   ├── app.py              # Main Flask application
 │   ├── ingest_data.py      # Data ingestion script
 │   └── test_*.py           # ChromaDB tests
@@ -194,7 +194,7 @@ To add new HR policy documents:
 
 ### Running Tests
 ```bash
-cd backend
+cd src
 python test_chroma_query.py
 ```
 
@@ -204,7 +204,7 @@ python test_chroma_query.py
 make check-deps
 
 # Or run the test script directly
-cd backend
+cd src
 python test_dependencies.py
 ```
 
@@ -221,7 +221,7 @@ curl http://localhost:5000/health
 ```
 
 ### Adding New Features
-1. Backend changes: Modify files in `backend/`
+1. Backend changes: Modify files in `src/`
 2. Frontend changes: Modify files in `frontend/`
 3. Data processing: Modify files in `ingestion/`
 

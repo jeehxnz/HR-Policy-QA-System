@@ -24,19 +24,19 @@ install:
 
 # Check and optionally install missing dependencies
 check-deps:
-	cd backend && python test_dependencies.py
+	cd src && python3 test_dependencies.py
 
 # Ingest data into ChromaDB
 ingest:
-	cd backend && python ingest_data.py
+	cd src && python3 ingest_data.py
 
 # Start the Flask API server
 run:
-	cd backend && python app.py
+	cd src && python3 app.py
 
 # Run ChromaDB tests
 test:
-	cd backend && python test_chroma_query.py
+	cd src && python3 test_chroma_query.py
 
 # Check system health status
 health:
