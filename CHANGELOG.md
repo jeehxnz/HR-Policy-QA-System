@@ -15,6 +15,12 @@ All notable changes to this project will be documented in this file.
   - `Makefile` with common development tasks
   - `env.example` template for environment configuration
   - Updated `.gitignore` to exclude generated files
+- **Dependency Management**: 
+  - Automatic dependency checking and installation on app startup
+  - `/dependencies` endpoint to check and auto-install missing packages
+  - `/health` endpoint for system status monitoring
+  - `/version` endpoint for application information
+  - Standalone `test_dependencies.py` script for dependency verification
 
 ### Changed
 - **Dependencies**: Updated `requirements.txt` with pinned versions and added missing dependencies:

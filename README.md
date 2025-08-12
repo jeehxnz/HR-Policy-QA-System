@@ -95,6 +95,49 @@ HR-Policy-QA-System/
 ### POST /ask
 Submit a question about HR policies.
 
+### GET /health
+Check system health and component status.
+
+**Response:**
+```json
+{
+  "status": "healthy",
+  "components": {
+    "embedding_model": true,
+    "chroma_db": true,
+    "tokenizer": true,
+    "openrouter_key": true
+  },
+  "config": {
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "chroma_db_path": "./chroma_db",
+    "collection_name": "hr_policies",
+    "openrouter_model": "openai/gpt-4.1"
+  }
+}
+```
+
+### GET /dependencies
+Check dependency status and optionally auto-install missing packages.
+
+**Parameters:**
+- `auto_install=true` - Automatically install missing dependencies
+
+**Response:**
+```json
+{
+  "dependencies": {
+    "flask": {"installed": true, "pip_name": "flask==3.0.0"},
+    "chromadb": {"installed": false, "pip_name": "chromadb==0.5.5"}
+  },
+  "missing_count": 1,
+  "missing_packages": ["chromadb==0.5.5"]
+}
+```
+
+### GET /version
+Get application version and architecture information.
+
 **Request:**
 ```json
 {
@@ -153,6 +196,28 @@ To add new HR policy documents:
 ```bash
 cd backend
 python test_chroma_query.py
+```
+
+### Checking Dependencies
+```bash
+# Check dependency status
+make check-deps
+
+# Or run the test script directly
+cd backend
+python test_dependencies.py
+```
+
+### Checking System Health
+```bash
+# Start the server first
+make run
+
+# Then check health in another terminal
+make health
+
+# Or use curl directly
+curl http://localhost:5000/health
 ```
 
 ### Adding New Features

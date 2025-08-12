@@ -5,9 +5,11 @@ help:
 	@echo "Available commands:"
 	@echo "  setup    - Create virtual environment and install dependencies"
 	@echo "  install  - Install dependencies in existing environment"
+	@echo "  check-deps - Check and optionally install missing dependencies"
 	@echo "  ingest   - Ingest data into ChromaDB"
 	@echo "  run      - Start the Flask API server"
 	@echo "  test     - Run ChromaDB tests"
+	@echo "  health   - Check system health status"
 	@echo "  clean    - Remove generated files"
 
 # Setup virtual environment and install dependencies
@@ -20,6 +22,10 @@ setup:
 install:
 	pip install -r requirements.txt
 
+# Check and optionally install missing dependencies
+check-deps:
+	cd backend && python test_dependencies.py
+
 # Ingest data into ChromaDB
 ingest:
 	cd backend && python ingest_data.py
@@ -31,6 +37,11 @@ run:
 # Run ChromaDB tests
 test:
 	cd backend && python test_chroma_query.py
+
+# Check system health status
+health:
+	@echo "Checking system health..."
+	@curl -s http://localhost:5000/health | python -m json.tool 2>/dev/null || echo "Server not running. Start with 'make run' first."
 
 # Clean generated files
 clean:
