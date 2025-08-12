@@ -4,3 +4,4 @@ flask_cors
 pandas
 gunicorn
 chromadb
+python-dotenv

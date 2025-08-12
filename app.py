@@ -7,8 +7,12 @@ import requests
 import json
 from transformers import AutoTokenizer
 import traceback
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
+
 CORS(app)
 
 # --- Configuration ---
@@ -61,7 +65,7 @@ if not tokenizer_llm:
 @app.route('/ask', methods=['POST'])
 def ask_hr_question():
     data = request.json
-    question = data.get('question')
+    question: str = data.get('question')
 
     if not question:
         return jsonify({"error": "No question provided"}), 400
@@ -92,7 +96,10 @@ def ask_hr_question():
         if results is not None:
             print(f"Chroma DB query returned raw results:")
             print(results)
-            print(f"Chroma DB query returned {len(results.get('documents', []))} results.")
+            documents = results.get('documents')
+            if documents is None:
+                documents = []
+            print(f"Chroma DB query returned {len(documents)} results.")
         else:
             print("Chroma DB query returned None results.")
 
