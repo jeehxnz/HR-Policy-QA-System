@@ -172,3 +172,24 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Project-specific ignores
+chroma_db/
+*.pt
+*.bin
+*.sqlite3
+*.sqlite3-journal
+
+# Environment files
+.env
+env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -1,7 +1,9 @@
-sentence_transformers
-flask
-flask_cors
-pandas
-gunicorn
-chromadb
-python-dotenv
+flask==3.0.0
+flask-cors==4.0.0
+chromadb==0.5.5
+sentence-transformers==2.7.0
+transformers==4.41.1
+torch==2.3.1
+requests==2.32.3
+python-dotenv==1.0.1
+gunicorn==21.2.0
