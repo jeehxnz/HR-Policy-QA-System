@@ -10,6 +10,8 @@ help:
 	@echo "  run      - Start the Flask API server"
 	@echo "  test     - Run ChromaDB tests"
 	@echo "  health   - Check system health status"
+	@echo "  deploy-setup - Setup for cPanel deployment"
+	@echo "  deploy-test  - Test deployment setup"
 	@echo "  clean    - Remove generated files"
 
 # Setup virtual environment and install dependencies
@@ -43,10 +45,18 @@ health:
 	@echo "Checking system health..."
 	@curl -s http://localhost:5000/health | python -m json.tool 2>/dev/null || echo "Server not running. Start with 'make run' first."
 
+# Setup for cPanel deployment
+deploy-setup:
+	python3 cpanel_deploy.py
+
+# Test deployment setup
+deploy-test:
+	python3 deployment_test.py
+
 # Clean generated files
 clean:
 	rm -rf chroma_db/
 	rm -rf __pycache__/
-	rm -rf backend/__pycache__/
+	rm -rf src/__pycache__/
 	rm -rf ingestion/__pycache__/
 	find . -name "*.pyc" -delete

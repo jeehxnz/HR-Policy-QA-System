@@ -16,7 +16,7 @@ def check_and_install_dependencies():
     required_packages = {
         'flask': 'flask==3.0.0',
         'flask_cors': 'flask-cors==4.0.0',
-        'chromadb': 'chromadb==0.5.5',
+        'chromadb': 'chromadb==0.4.24',
         'sentence_transformers': 'sentence-transformers==2.7.0',
         'transformers': 'transformers==4.41.1',
         'torch': 'torch==2.3.1',
@@ -57,9 +57,9 @@ def check_and_install_dependencies():
     return True
 
 # Check dependencies before importing
-if not check_and_install_dependencies():
-    print("Dependency check failed. Exiting.")
-    sys.exit(1)
+# if not check_and_install_dependencies():
+#     print("Dependency check failed. Exiting.")
+#     sys.exit(1)
 
 # Now import the packages that might have been missing
 import chromadb
@@ -207,7 +207,9 @@ def ask_hr_question():
 
         print("Preparing messages for LLM...")
         messages = [
-            {"role": "system", "content": "You are a helpful AI assistant for bKash employees. Answer questions based ONLY on the provided HR policies. If the policies do not contain information relevant to the question, state that the answer is not found in the provided documents. Be concise and directly answer the question."}
+            {"role": "system", "content": "You are a helpful AI assistant for bKash employees. Answer questions based ONLY on the provided HR policies. If the policies do not contain information relevant to the question, state that the answer is not found in the provided documents. Be concise and directly answer the question."
+            "Answer in the language specified, you will be instructed to answer either with bangla or english. Answer in English by default"
+            }
         ]
 
         if context and context.strip() != "No relevant HR policies found in the database.":

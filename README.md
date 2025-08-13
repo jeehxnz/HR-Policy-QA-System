@@ -225,6 +225,47 @@ curl http://localhost:5000/health
 2. Frontend changes: Modify files in `frontend/`
 3. Data processing: Modify files in `ingestion/`
 
+## Deployment
+
+### cPanel Deployment
+
+1. **Prepare for deployment:**
+   ```bash
+   python3 cpanel_deploy.py
+   ```
+
+2. **Upload files to cPanel:**
+   - Upload all files to your cPanel hosting directory
+   - Ensure `src/`, `frontend/`, and `Data/` directories are included
+
+3. **Configure cPanel Python App:**
+   - Go to cPanel → "Setup Python App"
+   - Create a new Python application
+   - Set the application root to your domain/subdomain
+   - Set the application startup file to `passenger_wsgi.py` or `src/wsgi.py`
+   - Set Python version to 3.10 or higher
+
+4. **Set environment variables:**
+   - Edit `.env` file with your production settings
+   - Ensure `OPENROUTER_API_KEY` is set
+   - Update paths for production environment
+
+5. **Install dependencies:**
+   ```bash
+   pip install -r requirements-production.txt
+   ```
+
+6. **Test deployment:**
+   ```bash
+   python3 deployment_test.py
+   ```
+
+### Other Deployment Options
+
+- **Containerization**: Use Docker with `chroma_db/` as a persistent volume
+- **Static hosting**: Serve frontend via NGINX with API reverse proxy
+- **Cloud platforms**: Deploy to Heroku, Railway, or similar platforms
+
 ## License
 
 [Add your license information here]
