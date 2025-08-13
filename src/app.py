@@ -19,7 +19,7 @@ def check_and_install_dependencies():
         'chromadb': 'chromadb==0.4.24',
         'sentence_transformers': 'sentence-transformers==2.7.0',
         'transformers': 'transformers==4.41.1',
-        'torch': 'torch==2.3.1',
+        'torch': 'torch==2.3.1+cpu --index-url https://download.pytorch.org/whl/cpu',
         'requests': 'requests==2.32.3',
         'python_dotenv': 'python-dotenv==1.0.1'
     }
@@ -317,10 +317,10 @@ def check_dependencies():
     required_packages = {
         'flask': 'flask==3.0.0',
         'flask_cors': 'flask-cors==4.0.0',
-        'chromadb': 'chromadb==0.5.5',
+        'chromadb': 'chromadb==0.4.24',
         'sentence_transformers': 'sentence-transformers==2.7.0',
         'transformers': 'transformers==4.41.1',
-        'torch': 'torch==2.3.1',
+        'torch': 'torch==2.3.1+cpu --index-url https://download.pytorch.org/whl/cpu',
         'requests': 'requests==2.32.3',
         'python_dotenv': 'python-dotenv==1.0.1'
     }
