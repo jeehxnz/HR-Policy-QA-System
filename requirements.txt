@@ -3,7 +3,7 @@ flask-cors==4.0.0
 chromadb==0.4.24
 sentence-transformers==2.7.0
 transformers==4.41.1
-torch==2.3.1
+# torch==2.3.1
 requests==2.32.3
 python-dotenv==1.0.1
 gunicorn==21.2.0
