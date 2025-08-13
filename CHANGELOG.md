@@ -21,6 +21,12 @@ All notable changes to this project will be documented in this file.
   - `/health` endpoint for system status monitoring
   - `/version` endpoint for application information
   - Standalone `test_dependencies.py` script for dependency verification
+- **WSGI Deployment Support**:
+  - `src/wsgi.py` - WSGI entry point for cPanel and other WSGI servers
+  - `passenger_wsgi.py` - Alternative WSGI entry point for Passenger deployments
+  - `.htaccess` - Apache configuration for routing requests to WSGI
+  - `cpanel_deploy.py` - Deployment setup script for cPanel
+  - `deployment_test.py` - Verification script for deployment readiness
 
 ### Changed
 - **Dependencies**: Updated `requirements.txt` with pinned versions and added missing dependencies:
