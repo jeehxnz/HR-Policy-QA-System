@@ -16,7 +16,7 @@ def check_and_install_dependencies():
     required_packages = {
         'flask': 'flask==3.0.0',
         'flask_cors': 'flask-cors==4.0.0',
-        'chromadb': 'chromadb==0.4.24',
+        'chromadb': 'chromadb==1.0.16',
         'sentence_transformers': 'sentence-transformers==2.7.0',
         'transformers': 'transformers==4.41.1',
         'torch': 'torch==2.3.1',
@@ -317,7 +317,7 @@ def check_dependencies():
     required_packages = {
         'flask': 'flask==3.0.0',
         'flask_cors': 'flask-cors==4.0.0',
-        'chromadb': 'chromadb==0.5.5',
+        'chromadb': 'chromadb==1.0.16',
         'sentence_transformers': 'sentence-transformers==2.7.0',
         'transformers': 'transformers==4.41.1',
         'torch': 'torch==2.3.1',
@@ -383,5 +383,7 @@ def get_version():
         }
     })
 
+# Debugging off for now
 if __name__ == '__main__':
-    app.run(debug=False, port=5000)
+    app.run(debug=False, port=5002)
+

@@ -138,6 +138,53 @@ venv.bak/
 .lightweight
 .light
 .test
+.light
+.lightweight/
+.test/
+
+# Virtual Environments - Comprehensive patterns
+# Standard virtual environment names
+venv/
+env/
+.venv/
+.env/
+ENV/
+env.bak/
+venv.bak/
+
+# Python virtual environment tools
+.python-version
+.pipenv/
+.poetry/
+.pdm/
+
+# Conda environments
+.conda/
+conda-env/
+anaconda/
+miniconda/
+
+# Virtual environment variations
+virtualenv/
+virtual_env/
+virtual-env/
+python_env/
+python-env/
+pyenv/
+py_env/
+py-env/
+
+# IDE-specific virtual environments
+.vscode/settings.json
+.idea/workspace.xml
+*.venv/
+
+# Other common virtual environment patterns
+*venv*/
+*env*/
+*_env*/
+*_venv*/
+
 
 # Spyder project settings
 .spyderproject
