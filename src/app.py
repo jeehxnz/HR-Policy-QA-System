@@ -212,8 +212,8 @@ def ask_hr_question():
             }
         ]
 
-        if context and context.strip() != "No relevant HR policies found in the database.":
-             messages.append({"role": "user", "content": f"""Based on the following bKash HR policies:
+        if context and context.strip() != "No relevant data found in the database.":
+             messages.append({"role": "user", "content": f"""Based on the following RAG context:
              {context}
 
              Question: {question}
@@ -228,7 +228,7 @@ def ask_hr_question():
             "Authorization": f"Bearer {OPENROUTER_API_KEY}",
             "Content-Type": "application/json",
             "HTTP-Referer": "http://127.0.0.1:5000", # Replace with your actual domain when deployed
-            "X-Title": "bKash HR Help Desk Local Dev" # Identify your application
+            "X-Title": "bKash RAG" 
         }
 
         payload = {

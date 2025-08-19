@@ -95,17 +95,19 @@ class ChromaDBClient:
         
         try:
             # Try to get existing collection
-            collection = self._client.get_collection(collection_name)
-            logger.info(f"Retrieved existing collection: {collection_name}")
-        except Exception:
-            # Create new collection if it doesn't exist
-            collection = self._client.create_collection(
+            if collection_name in self.list_collections():
+                collection = self._client.get_collection(collection_name)
+                logger.info(f"Retrieved existing collection: {collection_name}")
+            else:
+                # Create new collection if it doesn't exist
+                collection = self._client.create_collection(
                 name=collection_name,
                 metadata={"description": "HR Policy QA System embeddings"}
-            )
-            logger.info(f"Created new collection: {collection_name}")
-        
-        return collection
+                )
+                logger.info(f"Created new collection: {collection_name}")
+            return collection
+        except Exception as e:
+            raise RuntimeError(f"Error creating or getting collection {collection_name}: {e}")
     
     def get_collection(self, collection_name: str = "hr_policy_qa") -> chromadb.Collection:
         """
@@ -126,8 +128,7 @@ class ChromaDBClient:
         except Exception:
             # Create new collection if it doesn't exist
             collection = self._client.create_collection(
-                name=collection_name,
-                metadata={"description": "HR Policy QA System embeddings"}
+                name=collection_name
             )
         
         return collection
@@ -149,7 +150,7 @@ class ChromaDBClient:
             logger.error(f"Failed to list collections: {e}")
             raise
     
-    def reset_collection(self, collection_name: str = "hr_policy_qa") -> None:
+    def reset_collection(self, collection_name: str) -> None:
         """
         Reset (delete and recreate) a collection.
         
@@ -202,7 +203,72 @@ class ChromaDBClient:
         """Get the underlying ChromaDB client."""
         return self._client
 
+    # --- Step 4 helpers: add/upsert convenience methods ---
+    def add_documents(
+        self,
+        collection_name: str,
+        documents: list[str],
+        metadatas: Optional[list[dict]] = None,
+        embeddings: Optional[list[list[float]]] = None,
+        ids: Optional[list[str]] = None,
+    ) -> None:
+        """Add documents (and optional embeddings) into a collection."""
+        collection = self.get_collection(collection_name)
+        collection.add(
+            documents=documents,
+            metadatas=metadatas,
+            embeddings=embeddings,
+            ids=ids,
+        )
 
+    def upsert_documents(
+        self,
+        collection_name: str,
+        documents: list[str],
+        metadatas: Optional[list[dict]] = None,
+        embeddings: Optional[list[list[float]]] = None,
+        ids: Optional[list[str]] = None,
+    ) -> None:
+        """Upsert documents (and optional embeddings) into a collection."""
+        collection = self.get_collection(collection_name)
+        collection.upsert(
+            documents=documents,
+            metadatas=metadatas,
+            embeddings=embeddings,
+            ids=ids,
+        )
+
+    async def getTopNQueryResults(self, n: int, question_embedding, collection_name):
+        try:
+            collection = self.get_collection(collection_name)
+
+            results = collection.query(
+                query_embeddings=[question_embedding.tolist()],
+                n_results= n, # Get top n relevant chunks
+                include=["documents", "distances"]  # <= get scores back
+            )
+
+            
+            distances = results.get("distances")  # List[List[float]] | None
+
+            
+            print(distances)
+
+
+            return results
+        except Exception as e:
+            raise RuntimeError(f'Failed to query ChromaDB: {e}')
+    
+    async def getFlattenedChunks(self, chroma_query_results):
+        try:
+            retrieved_chunks = chroma_query_results.get('documents') or []
+            flat_chunks = [item for sublist in retrieved_chunks for item in sublist]
+
+            return flat_chunks
+
+        except Exception as e:
+            raise RuntimeError(f'Failed to retrieve flattened chunks: {e}')
+        
 # Global singleton instance
 chroma_client = ChromaDBClient()
 
@@ -231,3 +297,5 @@ def initialize_chroma_client(db_path: Optional[Path] = None, collection_name: st
     client = get_chroma_client()
     client.initialize(db_path, collection_name)
     return client
+
+

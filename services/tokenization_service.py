@@ -2,13 +2,10 @@ from __future__ import annotations
 
 from pathlib import Path
 from typing import Iterable, List, Dict, Any, Optional
-import torch
-import json
+import torch, os, json
 from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer
-import re
-from tqdm import tqdm
-from config import DATA_DIR, CHUNKS_DIR, EMBEDDINGS_DIR, SOURCE_MAPS_DIR
+from config import CHUNKS_DIR, EMBEDDINGS_DIR, SOURCE_MAPS_DIR
 
 class TokenizationService:
     """
@@ -78,7 +75,7 @@ class TokenizationService:
         else:
             return 'cpu'
 
-    def validate_chunk_params(self, max_tokens: int, overlap: int) -> None:
+    def  validate_chunk_params(self, max_tokens: int, overlap: int) -> None:
         """Validate chunking parameters."""
         if max_tokens <= 0:
             raise ValueError("max_tokens must be positive")
@@ -87,12 +84,12 @@ class TokenizationService:
         if overlap >= max_tokens:
             raise ValueError("overlap must be less than max_tokens")
 
-    def count_tokens(self, text: str) -> int:
+    async def  count_tokens(self, text: str) -> int:
         """Count tokens for text using the current tokenizer."""
         tokens = self.tokenizer.encode(text, add_special_tokens=False)
         return len(tokens)
 
-    def split_into_chunks_by_tokens(
+    async def split_into_chunks_by_tokens(
         self,
         text: str,
         max_tokens: Optional[int] = None,
@@ -115,29 +112,29 @@ class TokenizationService:
         
         return chunks
 
-    def chunk_file(self, in_path: Path, out_path: Optional[Path] = None) -> Path:
+    async def chunk_file(self, in_path: Path, out_path: Optional[Path] = None) -> Path:
         """Read a cleaned .txt file, split into chunks, and write a JSON list to disk."""
         if out_path is None:
             out_path = in_path.parent / f"{in_path.stem}_chunks.json"
         
         text = in_path.read_text(encoding='utf-8')
-        chunks = self.split_into_chunks_by_tokens(text)
+        chunks = await self.split_into_chunks_by_tokens(text)
         
-        return self.write_chunks(chunks, out_path)
+        return await self.write_chunks(chunks, out_path)
 
-    def write_chunks(self, chunks: List[str], out_path: Path) -> Path:
+    async def write_chunks(self, chunks: List[str], out_path: Path) -> Path:
         """Persist chunk strings into a JSON file."""
         out_path.parent.mkdir(parents=True, exist_ok=True)
         with open(out_path, 'w', encoding='utf-8') as f:
             json.dump(chunks, f, ensure_ascii=False, indent=2)
         return out_path
 
-    def read_chunks(self, json_path: Path) -> List[str]:
+    async def read_chunks(self, json_path: Path) -> List[str]:
         """Load chunk strings from a JSON file."""
         with open(json_path, 'r', encoding='utf-8') as f:
             return json.load(f)
 
-    def encode_chunks(
+    async def encode_chunks(
         self,
         chunks: List[str],
         batch_size: int = 32,
@@ -161,13 +158,13 @@ class TokenizationService:
         
         return embeddings
 
-    def save_embeddings(self, tensor: torch.Tensor, out_path: Path) -> Path:
+    async def  save_embeddings(self, tensor: torch.Tensor, out_path: Path) -> Path:
         """Save embeddings tensor to disk."""
         out_path.parent.mkdir(parents=True, exist_ok=True)
         torch.save(tensor, out_path)
         return out_path
 
-    def build_source_map(
+    async def build_source_map(
         self,
         chunk_index_lists: Dict[str, List[str]],
     ) -> List[Dict[str, Any]]:
@@ -186,14 +183,47 @@ class TokenizationService:
         
         return mapping
 
-    def save_source_map(self, mapping: List[Dict[str, Any]], out_path: Path) -> Path:
+    async def save_source_map(self, mapping: List[Dict[str, Any]], out_path: Path) -> Path:
         """Save the source map as JSON."""
         out_path.parent.mkdir(parents=True, exist_ok=True)
         with open(out_path, 'w', encoding='utf-8') as f:
             json.dump(mapping, f, ensure_ascii=False, indent=2)
         return out_path
 
-    def run_pipeline(
+    # --- Step 4 helpers: load results and assemble payloads ---
+    def load_embeddings(self, path: Path) -> torch.Tensor:
+        """Load embeddings tensor from disk."""
+        return torch.load(path)
+
+    def load_source_map(self, path: Path) -> Any:
+        """Load source map JSON from disk."""
+        with open(path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+
+    def load_all_chunks_for_files(
+        self,
+        cleaned_txt_files: Iterable[Path],
+        chunks_dir: Optional[Path] = None,
+    ) -> Dict[str, List[Any]]:
+        """
+        Load and concatenate chunk strings for the given cleaned text files, preserving order.
+
+        Returns a dict with keys: 'documents' (List[str]) and 'metadatas' (List[Dict]).
+        """
+        chunks_dir = chunks_dir or self.get_default_chunks_dir()
+        all_chunks: List[str] = []
+        all_metadatas: List[Dict[str, Any]] = []
+
+        for txt_path in cleaned_txt_files:
+            chunk_file = chunks_dir / f"{txt_path.stem}_chunks.json"
+            with open(chunk_file, 'r', encoding='utf-8') as f:
+                chunks = json.load(f)
+            all_chunks.extend(chunks)
+            all_metadatas.extend({"source": txt_path.name} for _ in chunks)
+
+        return {"documents": all_chunks, "metadatas": all_metadatas}
+
+    async def run_pipeline(
         self,
         cleaned_txt_files: Iterable[Path],
         chunks_out_dir: Path,
@@ -212,24 +242,25 @@ class TokenizationService:
         chunk_index_lists = {}
         
         for txt_file in cleaned_txt_files_list:
-            chunk_file = self.chunk_file(txt_file, chunks_out_dir / f"{txt_file.stem}_chunks.json")
+            chunk_file = await self.chunk_file(txt_file, chunks_out_dir / f"{txt_file.stem}_chunks.json")
             chunk_files.append(chunk_file)
-            chunk_index_lists[str(txt_file)] = self.read_chunks(chunk_file)
+            # Ensure we await the async read to store actual chunk lists
+            chunk_index_lists[str(txt_file)] = await self.read_chunks(chunk_file)
         
         # Step 2: Encode all chunks
         all_chunks = []
         for chunk_file in chunk_files:
-            chunks = self.read_chunks(chunk_file)
+            chunks = await self.read_chunks(chunk_file)
             all_chunks.extend(chunks)
         
-        embeddings = self.encode_chunks(all_chunks, batch_size)
+        embeddings = await self.encode_chunks(all_chunks, batch_size)
         
         # Step 3: Save embeddings
-        self.save_embeddings(embeddings, embeddings_out_path)
+        await self.save_embeddings(embeddings, embeddings_out_path)
         
         # Step 4: Build and save source map
-        source_map = self.build_source_map(chunk_index_lists)
-        self.save_source_map(source_map, source_map_out_path)
+        source_map = await self.build_source_map(chunk_index_lists)
+        await self.save_source_map(source_map, source_map_out_path)
         
         # Return summary
         total_chunks = sum(len(chunks) for chunks in chunk_index_lists.values())
@@ -244,7 +275,7 @@ class TokenizationService:
             "source_map_out_path": str(source_map_out_path)
         }
 
-    def run_pipeline_with_defaults(
+    async def run_pipeline_with_defaults(
         self,
         cleaned_txt_files: Iterable[Path],
         batch_size: int = 32,
@@ -267,7 +298,7 @@ class TokenizationService:
         embeddings_path = self.get_default_embeddings_path(embeddings_filename)
         source_map_path = self.get_default_source_map_path(source_map_filename)
         
-        return self.run_pipeline(
+        return await self.run_pipeline(
             cleaned_txt_files=cleaned_txt_files,
             chunks_out_dir=chunks_dir,
             embeddings_out_path=embeddings_path,
@@ -275,8 +306,71 @@ class TokenizationService:
             batch_size=batch_size
         )
     
+    @staticmethod
+    def clear_tmp_file_dirs():
+        try:
+            print(f'Attempting to clear CHUNKS_DIR')
+            for file in CHUNKS_DIR.iterdir():
+                if file.is_file():
+                    os.remove(file)
+            print(f'Cleared CHUNKS_DIR') 
 
+            print(f'Attempting to clear EMBEDDINGS_DIR')
+            for file in EMBEDDINGS_DIR.iterdir():
+                if file.is_file():
+                    os.remove(file)
+            print(f'Cleared EMBEDDINGS_DIR') 
+
+            print(f'Attempting to clear SOURCE_MAPS_DIR')
+            for file in SOURCE_MAPS_DIR.iterdir():
+                if file.is_file():
+                    os.remove(file)
+            print(f'Cleared SOURCE_MAPS_DIR') 
+            
+        except Exception as e:
+            raise RuntimeError(f'Error clearing tmp tokenization dirs: {e}')
+        
+    async def embedQuestion(self, question: str):
+        """
+        Takes in question string, and embeds it
+        """
+        try:
+            question_embedding = self.embedding_model.encode(question, convert_to_tensor=True)
+            return question_embedding
+        except Exception as e:
+            raise RuntimeError(f'Error embedding question: {e}')
     
+    async def prepareLLMContext(self, flat_chunks):
+        """
+        Processes Flatened chunks from ChromaDB Query for use for LLM Client
+        """
+        try:
+            if not flat_chunks:
+                context = "No relevant data found in the database."
+            else:
+                max_context_tokens = 3000
+                context_tokens = []
+                context_chunks = []
+                current_token_count = 0
 
-    
+                for chunk in flat_chunks:
+                    try:
+                        chunk_tokens = self.tokenizer.encode(chunk, add_special_tokens=False)
+                        if current_token_count + len(chunk_tokens) <= max_context_tokens:
+                            context_tokens.extend(chunk_tokens)
+                            context_chunks.append(chunk)
+                            current_token_count += len(chunk_tokens)
+                        else:
+                            break
+                    except Exception as e:
+                         print(f"Error encoding chunk with tokenizer: {e}. Skipping chunk.")
+                         if current_token_count <= max_context_tokens:
+                             context_chunks.append(chunk)
+                             current_token_count += 100
+                
+                context = "\n\n".join(context_chunks)
 
+            return context
+        
+        except Exception as e:
+            raise RuntimeError(f'Error embedding question: {e}')
