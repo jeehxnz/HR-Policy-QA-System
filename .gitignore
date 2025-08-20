@@ -14,7 +14,6 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
 lib64/
 parts/
 sdist/
@@ -135,9 +134,56 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-.lightweight
-.light
-.test
+
+# Project-specific directories
+.lightweight/
+.light/
+.test/
+lightweight/
+
+# Virtual Environments - Comprehensive patterns
+# Standard virtual environment names
+venv/
+env/
+.venv/ 
+.env/
+ENV/
+env.bak/
+venv.bak/
+
+# Python virtual environment tools
+.python-version
+.pipenv/
+.poetry/
+.pdm/
+
+# Conda environments
+.conda/
+conda-env/
+anaconda/
+miniconda/
+
+# Virtual environment variations
+virtualenv/
+virtual_env/
+virtual-env/
+python_env/
+python-env/
+pyenv/
+py_env/
+py-env/
+
+# IDE-specific virtual environments
+.vscode/settings.json
+.idea/workspace.xml
+*.venv/
+
+# Other common virtual environment patterns
+*venv*/
+*env*/
+*_env*/
+*_venv*/
+
 
 # Spyder project settings
 .spyderproject
@@ -177,7 +223,8 @@ cython_debug/
 .pypirc
 
 # Project-specific ignores
-chroma_db/
+chroma_db_backup_20250813_133309
+chroma_db_backup_20250818_163255
 *.pt
 *.bin
 *.sqlite3
@@ -195,3 +242,6 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# Front end prototype
+frontend/
