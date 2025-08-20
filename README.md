@@ -1,275 +1,254 @@
-# HR-Policy-QA-System
+# RAG Chatbot API
 
-An intelligent question-answering system for HR policies using Retrieval-Augmented Generation (RAG) with ChromaDB and OpenRouter.
+A sophisticated Retrieval-Augmented Generation (RAG) chatbot system built with Flask, ChromaDB, and OpenRouter. This system provides intelligent question-answering capabilities for HR policies and merchant FAQs with support for multiple languages.
 
-## Overview
+## 🚀 Features
 
-This system provides bKash employees with instant, accurate answers to HR policy questions by:
-- Embedding questions using sentence transformers
-- Retrieving relevant policy chunks from a vector database
-- Generating contextual answers using an LLM via OpenRouter
+- **Multi-Domain Support**: HR policies and merchant FAQs
+- **Multi-Language**: Bengali and English support (For mechants only)
+- **Advanced RAG**: Context-aware responses with source citations
+- **Scalable Architecture**: Microservices-based design
 
-## Architecture
-
-- **Embeddings**: `sentence-transformers/all-MiniLM-L6-v2`
-- **Vector Store**: ChromaDB persistent collection
-- **LLM**: OpenRouter (default: `openai/gpt-4.1`)
-- **Backend**: Flask API
-- **Frontend**: Static HTML/CSS/JS
-
-## Quick Start
-
-### Prerequisites
-- Python 3.10-3.12
-- OpenRouter API key
-
-### Setup
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd HR-Policy-QA-System
-   ```
-
-2. Create virtual environment:
-   ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Configure environment:
-   ```bash
-   cp env.example .env
-   # Edit .env with your OpenRouter API key
-   ```
-
-5. Ingest data (if using provided data):
-   ```bash
-   cd src
-   python ingest_data.py
-   ```
-
-6. Start the API:
-   ```bash
-   cd src
-   python app.py
-   ```
-
-7. Open the frontend:
-   - Open `frontend/index.html` in your browser
-   - Or serve it via a local server
-
-## Project Structure
+## 🏗️ Architecture
 
 ```
-HR-Policy-QA-System/
-├── src/                    # Flask API and backend logic
-│   ├── app.py              # Main Flask application
-│   ├── ingest_data.py      # Data ingestion script
-│   └── test_*.py           # ChromaDB tests
-├── frontend/               # Static web interface
-│   ├── index.html          # Landing page
-│   ├── query.html          # Question interface
-│   ├── script.js           # Frontend logic
-│   ├── style.css           # Styling
-│   └── assets/             # Images and static assets
-├── ingestion/              # Data processing scripts
-│   └── q_a_bkash.py        # PDF processing and embedding
-├── Data/                   # Processed data files
-│   ├── *_cleaned.txt       # Cleaned text files
-│   ├── *_chunks.json       # Text chunks
-│   ├── all_chunks_embeddings.pt  # Embeddings
+┌─────────────────┐    ┌─────────────────┐
+│   Flask         │    │   ChromaDB      │
+│   Backend       │◄──►│   Vector Store  │
+└─────────────────┘    └─────────────────┘
+                              │
+                              ▼
+                       ┌─────────────────┐
+                       │   OpenRouter    │
+                       │   LLM Service   │
+                       └─────────────────┘
+```
+
+## 📁 Project Structure
+
+```
+RAG-chatbot-api/
+├── src/                          # Main application files
+│   ├── hr_app.py                 # HR policy API endpoints
+│   └── merchant_app.py           # Merchant FAQ API endpoints
+├── services/                     # Core business logic services
+│   ├── file_processing_service.py    # PDF/text processing
+│   ├── tokenization_service.py       # Text chunking & embeddings
+│   ├── llm_querying_service.py       # LLM integration
+│   ├── merchant_querying_service.py  # Merchant FAQ handling
+│   └── __init__.py
+├── lib/                          # Shared libraries
+│   ├── chromaDBClient.py         # ChromaDB client wrapper
+│   └── __init__.py
+├── ingestion/                    # Data ingestion scripts
+│   └── q_a_bkash.py             # PDF processing pipeline
+├── scripts/                      # Utility scripts
+│   ├── merchant_pdf_processing.py    # Document processing
+│   ├── clear_all_collections.py      # Database cleanup
+│   └── update_requirements.py        # Requirements management
+├── Data/                         # Data storage
+│   ├── chunks/                   # Text chunks
+│   ├── source_files/             # Original documents
 │   └── embedding_source_map.json # Source mapping
-├── chroma_db/              # ChromaDB storage (generated)
-├── requirements.txt        # Python dependencies
-├── env.example             # Environment template
-└── README.md               # This file
+├── chroma_db/                    # ChromaDB storage 
+├── examples/                     # Usage examples
+│   ├── query_merchants.py        # Merchant query examples
+│   └── merchant_pdf_processing.py # PDF processing examples
+├── requirements.txt              # Full development dependencies
+├── requirements-light.txt        # Production dependencies
+├── requirements-dev.txt          # Development tools
+├── config.py                     # Configuration settings
+├── env.example                   # Environment template
+└── README.md                     # This file
 ```
 
-## API Reference
+## 📋 Prerequisites
 
-### POST /ask
-Submit a question about HR policies.
+- **Python**: 3.10 - 3.12
+- **OpenRouter API Key**: For LLM access
+- **Memory**: 4GB+ RAM (for embedding models)
+- **Storage**: 2GB+ free space
 
-### GET /health
-Check system health and component status.
+## 🛠️ Quick Start
 
-**Response:**
-```json
-{
-  "status": "healthy",
-  "components": {
-    "embedding_model": true,
-    "chroma_db": true,
-    "tokenizer": true,
-    "openrouter_key": true
-  },
-  "config": {
-    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
-    "chroma_db_path": "./chroma_db",
-    "collection_name": "hr_policies",
-    "openrouter_model": "openai/gpt-4.1"
-  }
-}
+### 1. Clone and Setup
+
+```bash
+git clone <repository-url>
+cd RAG-chatbot-api
+
+# Create virtual environment
+python3 -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 ```
 
-### GET /dependencies
-Check dependency status and optionally auto-install missing packages.
+### 2. Install Dependencies
 
-**Parameters:**
-- `auto_install=true` - Automatically install missing dependencies
+```bash
+# For production deployment
+pip install -r requirements-light.txt
 
-**Response:**
-```json
-{
-  "dependencies": {
-    "flask": {"installed": true, "pip_name": "flask==3.0.0"},
-    "chromadb": {"installed": false, "pip_name": "chromadb==0.5.5"}
-  },
-  "missing_count": 1,
-  "missing_packages": ["chromadb==0.5.5"]
-}
+# For full development environment
+pip install -r requirements.txt
+
+# For development tools only
+pip install -r requirements-dev.txt
 ```
 
-### GET /version
-Get application version and architecture information.
+### 3. Environment Configuration
 
-**Request:**
-```json
-{
-  "question": "What is the travel policy approval process?"
-}
+```bash
+cp env.example .env
 ```
 
-**Response:**
-```json
-{
-  "answer": "According to the Employee Travel and Transfer Guideline...",
-  "source_metadata": [
-    {
-      "source_file": "Employee Travel and Transfer Guideline_cleaned.txt",
-      "chunk_index": 12
-    }
-  ]
-}
+Edit `.env` with your configuration:
+```env
+# Required
+OPENROUTER_API_KEY=your_openrouter_api_key_here
+SENTENCE_TRANSFORMER_MODEL=sentence-transformers/shihab17/bangla-sentence-transformer (for Merchant API)
+MODEL_NAME_EMBEDDING=sentence-transformers/all-MiniLM-L6-v2 (for HR API)
+
+# Optional (with defaults)
+CHROMA_DB_PATH=./chroma_db
+COLLECTION_NAME=hr_policies (for merchant api)
+OPENROUTER_MODEL=openai/gpt-4.1
+MERCHANT_FAQ_COLLECTION_NAME=Merchant_FAQ_V7
+
 ```
 
-## Environment Variables
+### 4. Data Ingestion
+
+```bash
+# Process and ingest HR policy documents
+python scripts/merchant_pdf_processing.py
+
+# Or use the ingestion service directly
+python -c "
+from services.file_processing_service import FileProcessingService
+from services.tokenization_service import TokenizationService
+# ... ingestion code
+"
+```
+
+### 5. Start the Application
+
+```bash
+# Development server
+python3 src/merchant_app.py
+```
+
+### 6. Access the Application
+
+- **API**: http://localhost:5555
+
+## 🔧 Configuration
+
+### Environment Variables
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `OPENROUTER_API_KEY` | Required | Your OpenRouter API key |
-| `CHROMA_DB_PATH` | `./chroma_db` | Path to ChromaDB storage |
-| `COLLECTION_NAME` | `hr_policies` | ChromaDB collection name |
+| `OPENROUTER_API_KEY` | Required | OpenRouter API key for LLM access |
+| `CHROMA_DB_PATH` | `./chroma_db` | ChromaDB storage directory |
+| `COLLECTION_NAME` | `hr_policies` | HR App collection |
 | `MODEL_NAME_EMBEDDING` | `sentence-transformers/all-MiniLM-L6-v2` | Embedding model |
 | `OPENROUTER_MODEL` | `openai/gpt-4.1` | LLM model via OpenRouter |
+| `MERCHANT_FAQ_COLLECTION_NAME` | `merchant_faqs` | Merchant FAQ collection |
+| `SENTENCE_TRANSFORMER_MODEL` | `sentence-transformers/all-MiniLM-L6-v2` | Sentence transformer model |
 
-## Data Processing
+### Configuration Files
 
-To add new HR policy documents:
+- **`config.py`** - Application configuration
+- **`requirements-light.txt`** - Production dependencies
+- **`requirements.txt`** - Full development dependencies
+- **`requirements-dev.txt`** - Development tools
 
-1. Place PDFs in `Data/raw_pdfs/`
-2. Run the ingestion script:
-   ```bash
-   cd ingestion
-   python q_a_bkash.py
-   ```
-3. Ingest into ChromaDB:
-   ```bash
-   cd backend
-   python ingest_data.py
-   ```
+## 📚 How to Use
 
-## Troubleshooting
+### 1. Merchant FAQ Queries
 
-- **"Database not connected"**: Ensure `chroma_db/` exists and run ingestion
-- **"Embedding model not loaded"**: Check internet connection for model download
-- **"OpenRouter error"**: Verify API key and model availability
+#### Using the API
 
-## Development
-
-### Running Tests
 ```bash
-cd src
-python test_chroma_query.py
+# Ask a question about merchant services (Bengali)
+curl -X POST http://localhost:5555/ask \
+  -H "Content-Type: application/json" \
+  -d '{
+    "question": "মার্চেন্ট অ্যাকাউন্ট কীভাবে খুলব?",
+    "language": "bn"
+  }'
 ```
 
-### Checking Dependencies
-```bash
-# Check dependency status
-make check-deps
+#### Using Python
 
-# Or run the test script directly
-cd src
-python test_dependencies.py
+```python
+from services.merchant_querying_service import MerchantQueryingService
+
+# Initialize merchant service
+merchant_service = MerchantQueryingService()
+
+# Ask a question
+response = await merchant_service.query(
+    question="মার্চেন্ট অ্যাকাউন্ট কীভাবে খুলব?",
+    language="bn"
+)
+
+print(response)
 ```
 
-### Checking System Health
-```bash
-# Start the server first
-make run
+### 3. Document Processing
 
-# Then check health in another terminal
-make health
+#### Process New Documents
 
-# Or use curl directly
-curl http://localhost:5000/health
+```python
+from services.file_processing_service import FileProcessingService
+from services.tokenization_service import TokenizationService
+
+# Initialize services
+file_service = FileProcessingService()
+token_service = TokenizationService()
+
+# Process PDF documents
+pdf_files = ["new_policy.pdf", "updated_guidelines.pdf"]
+results = await file_service.process_files(pdf_files)
+
+print(f"Processed {results['pdf_files']} files")
+print(f"Generated {results['txt_files']} text files")
+print(f"Created {results['cleaned_files']} cleaned files")
 ```
 
-### Adding New Features
-1. Backend changes: Modify files in `src/`
-2. Frontend changes: Modify files in `frontend/`
-3. Data processing: Modify files in `ingestion/`
+#### Using the Script
 
-## Deployment
+```bash
+# Process documents using the provided script
+python scripts/merchant_pdf_processing.py
+```
 
-### cPanel Deployment
+### 4. Database Management
 
-1. **Prepare for deployment:**
-   ```bash
-   python3 cpanel_deploy.py
-   ```
+#### Clear Collections
 
-2. **Upload files to cPanel:**
-   - Upload all files to your cPanel hosting directory
-   - Ensure `src/`, `frontend/`, and `Data/` directories are included
+```bash
+# Clear all ChromaDB collections
+python scripts/clear_all_collections.py
+```
 
-3. **Configure cPanel Python App:**
-   - Go to cPanel → "Setup Python App"
-   - Create a new Python application
-   - Set the application root to your domain/subdomain
-   - Set the application startup file to `passenger_wsgi.py` or `src/wsgi.py`
-   - Set Python version to 3.10 or higher
+#### Using Python
 
-4. **Set environment variables:**
-   - Edit `.env` file with your production settings
-   - Ensure `OPENROUTER_API_KEY` is set
-   - Update paths for production environment
+```python
+from lib.chromaDBClient import get_chroma_client
 
-5. **Install dependencies:**
-   ```bash
-   pip install -r requirements-production.txt
-   ```
+# Initialize ChromaDB client
+chroma_client = get_chroma_client()
+chroma_client.initialize(db_path="./chroma_db", collection_name="Merchant_FAQ_V7")
 
-6. **Test deployment:**
-   ```bash
-   python3 deployment_test.py
-   ```
+# List collections
+collections = chroma_client.list_collections()
+print(f"Available collections: {collections}")
 
-### Other Deployment Options
+# Delete a collection
+chroma_client.delete_collection("test_collection")
+```
 
-- **Containerization**: Use Docker with `chroma_db/` as a persistent volume
-- **Static hosting**: Serve frontend via NGINX with API reverse proxy
-- **Cloud platforms**: Deploy to Heroku, Railway, or similar platforms
+---
 
-## License
-
-[Add your license information here]
-
-## Contributing
-
-[Add contribution guidelines here]
+**Built with ❤️ using Flask, ChromaDB, and OpenRouter**
