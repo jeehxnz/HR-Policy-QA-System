@@ -134,18 +134,18 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-.lightweight
-.light
-.test
-.light
+
+# Project-specific directories
 .lightweight/
+.light/
 .test/
+lightweight/
 
 # Virtual Environments - Comprehensive patterns
 # Standard virtual environment names
 venv/
 env/
-.venv/
+.venv/ 
 .env/
 ENV/
 env.bak/
@@ -223,7 +223,8 @@ cython_debug/
 .pypirc
 
 # Project-specific ignores
-chroma_db/
+chroma_db_backup_20250813_133309
+chroma_db_backup_20250818_163255
 *.pt
 *.bin
 *.sqlite3
@@ -242,9 +243,5 @@ Thumbs.db
 *.swp
 *.swo
 
-# Data Files
-Data/chunks/*
-Data/cleaned_txt_files/*
-Data/embeddings/*
-Data/raw_txt_files/*
-Data/unprocessed_files/*
+# Front end prototype
+frontend/

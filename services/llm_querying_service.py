@@ -28,7 +28,7 @@ class LLMQueryingService:
             }
         ]
        
-   async def apiCallWithContext(self, context, question):
+   async def apiCallWithContext(self, context, question, language: str = "bn"):
        """
        Make a request to the LLM API with the RAG context
        """
@@ -36,8 +36,11 @@ class LLMQueryingService:
        try:
            payload_messages = self.system_messages
 
-           if context and context.strip() != "No relevant HR policies found in the database.":
-             payload_messages.append({"role": "user", "content": f"""Based on the following bKash HR policies:
+           if context and context.strip() != "":
+             payload_messages.append({"role": "user", "content": f"""
+             Answer in {language} language. bn is for bengali. en is for english.
+             
+             Based on the following context:
              {context}
 
              Question: {question}

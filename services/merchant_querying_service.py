@@ -1,29 +1,25 @@
-import sys, argparse
-import json, os
-from dotenv import load_dotenv
-import asyncio
-from pathlib import Path
-
-# Add the project root to the Python path
-project_root = Path(__file__).parent.parent
-sys.path.insert(0, str(project_root))
-
+import os 
 from services.tokenization_service import TokenizationService
 from services.llm_querying_service import LLMQueryingService
+from dotenv import load_dotenv
 from lib.chromaDBClient import get_chroma_client
 from config import (
     CHROMA_DB_DIR)
 
-# Load environment variables from .env
 load_dotenv()
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 MERCHANT_FAQ_COLLECTION_NAME = os.environ.get('MERCHANT_FAQ_COLLECTION_NAME')
 SENTENCE_TRANSFORMER_MODEL = os.environ.get('SENTENCE_TRANSFORMER_MODEL')
 
-async def main():
-    collection_name = MERCHANT_FAQ_COLLECTION_NAME
+class MerchantQueryingService:
+    def __init__(self, collection_name: str = MERCHANT_FAQ_COLLECTION_NAME):
+        self.collection_name = collection_name
+        self.tokenization_service = TokenizationService(
+            model_name=SENTENCE_TRANSFORMER_MODEL
+        )
+        self.chroma_client = get_chroma_client()
 
-    SYSTEM_PROMPT = """
+        self.SYSTEM_PROMPT = f"""
                     আপনি একজন সহায়ক অ্যাসিস্ট্যান্ট, যিনি কেবলমাত্র bKash মার্চেন্টদের জন্য কাজ করেন।
                     আপনার কাজ হলো মার্চেন্ট সম্পর্কিত প্রশ্নগুলোর উত্তর সঠিকভাবে এবং সংক্ষেপে দেওয়া, এবং কেবলমাত্র সরবরাহ করা কনটেক্সট ডকুমেন্ট ব্যবহার করে উত্তর দিতে হবে।
 
@@ -43,45 +39,27 @@ async def main():
                     1. সরবরাহ করা কনটেক্সট থেকে সঠিক তথ্য বের করা।
                     2. সহজভাবে সংক্ষেপে উপস্থাপন করা।
                     3. মার্চেন্ট যাতে বাস্তবে ব্যবহার করতে পারে এমন কার্যকর ধাপ/পরামর্শ দেওয়া।
-
-                    প্রতিটি উত্তরের শেষে লিখবেন:
-                    👉 "অতিরিক্ত সহায়তার জন্য আপনি bKash মার্চেন্ট সাপোর্টের সাথে যোগাযোগ করতে পারেন।"
                     """
+        
+        self.llm_service = LLMQueryingService(
+            SYSTEM_PROMPT=self.SYSTEM_PROMPT,
+            LLM_API_KEY=OPENROUTER_API_KEY
+        )
+        
+        # Initialize Chroma client (db path + create default collection)
+        self.chroma_client.initialize(db_path=CHROMA_DB_DIR, collection_name=self.collection_name)
 
+        # Initialize LLM service
+        self.llm_service.intiailize()
 
-    llm_service = LLMQueryingService(
-        SYSTEM_PROMPT=SYSTEM_PROMPT,
-        LLM_API_KEY= OPENROUTER_API_KEY
-    )
+        
 
+    async def query(self, question: str, language: str = "bn"):
+        embedded_question = await self.tokenization_service.embedQuestion(question)
+        chroma_query_results = await self.chroma_client.getTopNQueryResults(3,embedded_question,collection_name=self.collection_name)
+        flattened_chunks = await self.chroma_client.getFlattenedChunks(chroma_query_results=chroma_query_results)
+        llm_context = await self.tokenization_service.prepareLLMContext(flat_chunks=flattened_chunks)
 
-    tokenization_service = TokenizationService(
-        model_name=SENTENCE_TRANSFORMER_MODEL
-    )
-    chroma_client = get_chroma_client()
-
-    # Initialize Chroma client (db path + create default collection)
-    chroma_client.initialize(db_path=CHROMA_DB_DIR, collection_name=collection_name)
-
-    question = "লেনদেন হিস্ট্রি কোথায় দেখতে পারবো ?"
-
-    embedded_question = await tokenization_service.embedQuestion(question)
-    chroma_query_results = await chroma_client.getTopNQueryResults(5,embedded_question,collection_name=collection_name)
-    flattened_chunks = await chroma_client.getFlattenedChunks(chroma_query_results=chroma_query_results)
-    llm_context = await tokenization_service.prepareLLMContext(flat_chunks=flattened_chunks)
-
-    # Initialize system prompt messages
-    llm_service.intiailize()
-
-    with open("chunks.txt", "w", encoding="utf-8") as f:
-        f.write(llm_context)
-
-    response_text = await llm_service.apiCallWithContext(llm_context, question=question)
-
-    with open("output.txt", "w", encoding="utf-8") as f:
-        f.write(response_text)
-    
-
-if __name__ == '__main__':
-    asyncio.run(main())
-
+        response_text = await self.llm_service.apiCallWithContext(llm_context, question=question, language=language)
+        
+        return response_text

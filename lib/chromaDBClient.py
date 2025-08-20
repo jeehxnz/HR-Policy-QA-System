@@ -248,21 +248,48 @@ class ChromaDBClient:
                 include=["documents", "distances"]  # <= get scores back
             )
 
-            
+            documents = results.get("documents")
             distances = results.get("distances")  # List[List[float]] | None
 
             
             print(distances)
 
 
-            return results
+            return [results, documents]
         except Exception as e:
             raise RuntimeError(f'Failed to query ChromaDB: {e}')
     
     async def getFlattenedChunks(self, chroma_query_results):
         try:
-            retrieved_chunks = chroma_query_results.get('documents') or []
-            flat_chunks = [item for sublist in retrieved_chunks for item in sublist]
+            # Normalize input shape: can be dict (results) or list [results, documents]
+            results_dict = None
+            if isinstance(chroma_query_results, dict):
+                results_dict = chroma_query_results
+            elif isinstance(chroma_query_results, (list, tuple)):
+                if len(chroma_query_results) > 0 and isinstance(chroma_query_results[0], dict):
+                    results_dict = chroma_query_results[0]
+                else:
+                    # Fallback: treat second or first element as documents list
+                    docs_candidate = None
+                    if len(chroma_query_results) > 1:
+                        docs_candidate = chroma_query_results[1]
+                    elif len(chroma_query_results) == 1:
+                        docs_candidate = chroma_query_results[0]
+                    results_dict = {"documents": docs_candidate or []}
+            else:
+                raise TypeError(f"Unsupported chroma_query_results type: {type(chroma_query_results)}")
+
+            retrieved_chunks = results_dict.get('documents') or []
+
+            # Handle shapes: [[str]] or [str]
+            if retrieved_chunks and isinstance(retrieved_chunks[0], list):
+                flat_chunks = [item for sublist in retrieved_chunks for item in sublist]
+            else:
+                flat_chunks = retrieved_chunks
+
+            with open("retrieved_chunks.txt", "w", encoding="utf-8") as f:
+                for index, chunk in enumerate(flat_chunks, start=1):
+                    f.write(f"Chunk {index}:\n{chunk}\n\n")
 
             return flat_chunks
 
