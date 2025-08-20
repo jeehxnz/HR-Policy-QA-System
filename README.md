@@ -391,4 +391,4 @@ chroma_client.delete_collection("test_collection")
 
 ---
 
-**Built with ❤️ using Flask, ChromaDB, and OpenRouter**
+**Built with Flask and ChromaDB**
