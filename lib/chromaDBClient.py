@@ -287,9 +287,10 @@ class ChromaDBClient:
             else:
                 flat_chunks = retrieved_chunks
 
-            with open("retrieved_chunks.txt", "w", encoding="utf-8") as f:
-                for index, chunk in enumerate(flat_chunks, start=1):
-                    f.write(f"Chunk {index}:\n{chunk}\n\n")
+            # For temporary testing purpose only 
+            # with open("retrieved_chunks.txt", "w", encoding="utf-8") as f:
+            #     for index, chunk in enumerate(flat_chunks, start=1):
+            #         f.write(f"Chunk {index}:\n{chunk}\n\n")
 
             return flat_chunks
 
