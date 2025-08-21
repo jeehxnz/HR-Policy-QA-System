@@ -26,12 +26,14 @@ queries = [
     "How can I play games in bKash?"
 ]
 
+GPT_4_1_MINI = "openai/gpt-4.1-mini"
 GPT_4_1 = "openai/gpt-4.1"
+GPT_4_1_NANO = "openai/gpt-4.1-nano"
 GPT_5_NANO = "openai/gpt-5-nano"
 
 async def main():
 
-    llm_model_name = GPT_5_NANO
+    llm_model_name = GPT_4_1_NANO
     logger.info(f"Beginning the English queries test with {llm_model_name}")
     querying_service = MerchantQueryingService(
         llm_model_name=llm_model_name

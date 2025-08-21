@@ -26,12 +26,14 @@ queries = [
     "bKash Merchant Account থেকে ব্যাংক অ্যাকাউন্টে টাকা ট্রান্সফার করা যাবে কি?",
     "আমি বিকাশ এ গেম খেলবো কি করে ?"
 ]
+GPT_4_1_MINI = "openai/gpt-4.1-mini"
 GPT_4_1 = "openai/gpt-4.1"
+GPT_4_1_NANO = "openai/gpt-4.1-nano"
 GPT_5_NANO = "openai/gpt-5-nano"
 
 async def main():
 
-    llm_model_name = GPT_5_NANO
+    llm_model_name = GPT_4_1_NANO
     logger.info(f"Beginning the bangla queries test with {llm_model_name}")
     querying_service = MerchantQueryingService(
         llm_model_name=llm_model_name

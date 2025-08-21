@@ -45,9 +45,9 @@ class LLMQueryingService:
            if self.LLM_MODEL_NAME == "openai/gpt-4.1":
             max_tokens = 300
            elif self.LLM_MODEL_NAME == "openai/gpt-5-nano":
-            max_tokens = 800
-           else:
             max_tokens = 1000
+           else:
+            max_tokens = 300
 
            if context and context.strip() != "":
              payload_messages.append({"role": "user", "content": f"""
@@ -73,7 +73,7 @@ class LLMQueryingService:
                    "model": self.LLM_MODEL_NAME,
                    "messages": payload_messages,
                    "temperature": 0.0,  # Keep temperature low for factual answers
-                   "reasoning": {"effort": "low"},
+                   "reasoning": {"effort": "medium"},
                    "max_tokens": max_tokens  # Limit response length
                }
            else:

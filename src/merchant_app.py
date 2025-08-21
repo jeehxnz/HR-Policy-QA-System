@@ -17,6 +17,10 @@ sys.path.insert(0, str(project_root))
 
 from services.merchant_querying_service import MerchantQueryingService
 
+# Import Env Variables
+load_dotenv()
+LLM_MODEL_NAME = os.environ.get("OPENROUTER_MODEL")
+
 app = Flask(__name__)
 
 # Configure CORS explicitly to avoid browser preflight issues
@@ -38,7 +42,7 @@ load_dotenv()
 
 # Initialize MerchantQueryingService
 merchant_querying_service = MerchantQueryingService(
-    llm_model_name="openai/gpt-5-nano"
+    llm_model_name=LLM_MODEL_NAME
 )
 
 @app.route('/ask', methods=['POST'])
@@ -53,7 +57,7 @@ def ask_merchant_question():
         # Run async function in sync context
         response = asyncio.run(merchant_querying_service.query(
             question, 
-            language
+            language,
         ))
         return jsonify({'response': response}), 200
     except Exception as e:
