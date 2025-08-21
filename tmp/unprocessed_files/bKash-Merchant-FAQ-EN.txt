@@ -1,0 +1,953 @@
+﻿Other Questions
+1. How can I download and install the Merchant App?
+ To use the bKash Merchant App, go to the Google Play Store and search for “bKash Merchant.” Tap the Install button. Once the installation is complete, tap Open to start using the app.
+2. Do I need an internet connection to download and use the bKash Merchant App?
+ Yes, an internet connection is required to download and use the bKash Merchant App.
+3. How do I start using the bKash Merchant App?
+* Open the bKash Merchant app from your application list.
+
+* Allow the app permissions for phone calls and location.
+
+* On the landing screen, tap the Login button.
+
+* Enter your bKash Merchant account number and select the SIM slot.
+
+* Allow permission for OTP auto-fill.
+
+* A 6-digit OTP will be sent to your registered mobile number. Once the app auto-detects it, proceed to the next step.
+
+* Enter your Merchant Account PIN and continue.
+
+* Enter your merchant name and email.
+
+* The welcome screen will appear—tap Get Started.
+
+* You will now see the Merchant App home screen.
+
+4. What should I do if I don’t receive the OTP on my mobile number?
+ Tap Resend Code and a new OTP will be sent to your merchant number.
+5. What features are available in the current version of the bKash Merchant App?
+   * View your most recent transaction from the home screen.
+
+   * Search for transactions by specific customer.
+
+   * Scroll through transaction history for the last 30 days.
+
+   * Tap on any transaction to view detailed information.
+
+Key Features:
+      * Easy Onboarding: Simple registration and login with account number, OTP, and PIN.
+
+      * Instant Payment Notifications: Receive real-time notifications for payments, even on your phone’s lock screen.
+
+      * Accept Payments Anytime: Show your Merchant QR code to customers for easy payments, or download and use it when needed.
+
+      * Quick Balance Check: Tap View Balance on the home screen to check your account balance instantly.
+
+      * Latest Transaction Details: View transaction date, time, amount, account number, charges, transaction ID, reference, cashback, and more.
+
+      * 30-Day Transaction History: Access detailed transaction records with filters (In / Out / Counter).
+
+      * Account Statement: Receive monthly statements automatically by email. You can also generate statements from the app.
+
+      * Agent Cash-Out: Withdraw cash by scanning an Agent QR code or entering the Agent number.
+
+      * bKash to Card: Send money from your Merchant Account to a Visa debit card.
+
+      * Bill Payment: Pay utility bills (electricity, gas, water, internet) on behalf of customers and receive instant digital receipts.
+
+      * Counter Payments: Create multiple counters in the app and accept bKash payments through counter-specific QR codes.
+
+      * Merchant-to-Merchant Payments: Pay other merchants by scanning their QR code or entering their account number.
+
+      * Send Money: Easily send money to customers by scanning their QR code or entering their account number.
+
+      * Cancel Transactions: Cancel payments within a set time and refund the customer instantly.
+
+      * Search Transactions: Use transaction ID or full customer number to search and view transaction details.
+
+6. What do I need to use the bKash Merchant App?
+         * An Android device with your merchant SIM active.
+
+         * An internet connection.
+
+         * Permissions for location, phone calls, and notifications.
+
+         * Minimum Android OS version 5.1.
+
+7. How can I check my account balance?
+ Tap View Balance on the home screen.
+8. How can I view my latest transaction?
+ Your most recent transaction is displayed on the home screen. Tap on it for details. Use the Refresh icon for updates or View All for full history.
+9. How can I find a specific transaction?
+ From the Transactions tab, enter the transaction ID, the last 4 digits, or the full 11-digit customer number. Tap Search to view details.
+10. How can I see my last 30 days of transactions?
+ Go to the Transactions screen and scroll to view up to 30 days of history. Filter by In, Out, or Counter.
+11. How quickly will I get transaction notifications?
+ You’ll receive notifications instantly if your phone is connected to the internet.
+12. What is a Merchant QR code, and how do I show it to customers?
+ It is a unique code linked to your merchant account. Customers can scan it to pay. To view, go to the home screen → tap QR Icon → View My QR. You can also download it.
+13. Where will I see transaction notifications?
+ In your phone’s notification bar or lock screen, as long as you are connected to the internet.
+14. Can I use my merchant account without the merchant SIM?
+ No, your merchant SIM must be active in the device to use the account.
+15. From where can I use the Merchant App?
+ You can use it from any location within Bangladesh.
+16. Can I share my merchant PIN with others?
+ No, for account security, never share your PIN.
+17. Can I share app screenshots with others?
+ No, for security reasons you should not share app screenshots.
+18. Should I log out before giving my phone to someone else?
+ Yes, always log out for your account’s security.
+19. Who should I contact for app installation or update issues?
+ Contact your nearest bKash agent or call the bKash Helpline at 16247.
+20. What should I do if I lose my merchant SIM?
+ Contact your nearest bKash agent or the bKash Helpline.
+21. What is the bKash Helpline number?
+ 16247
+22. How many days of transaction history can I view in the app?
+ Currently, you can view the latest transaction on the home screen and up to 30 days of history from the Transactions tab.
+24. What should I do if I cannot use the app?
+ Contact your nearest bKash agent.
+25. Can I update my KYC information from the app?
+ No, KYC updates are not available through the app at this time.
+26. If I have both Merchant and Customer SIMs in my phone, can I use both apps together?
+ Yes, you can.
+27. Do I need to log in using a specific internet network?
+ No, you can use any available internet connection.
+28. How many times can I change my email per month?
+ A merchant can change their email up to 10 times per month.
+29. How can I get my monthly statement?
+ At the end of each month, your statement is automatically sent to your registered email. Additionally, you can request statements a limited number of times from the 1st of each month via the app.
+PIN Change
+1. How can I change my PIN from the Merchant App?
+            * From the login page, tap Change PIN.
+
+            * A verification code will be sent to your phone number.
+
+            * Once the verification code auto-fills, tap Confirm.
+
+            * You will then see instructions for changing your PIN in four simple steps. Tap Change PIN to proceed.
+
+            * Follow the on-screen tutorial for face scanning. Tap Scan Face to continue.
+
+            * Follow the customer gesture tutorial shown on screen.
+
+            * Blink your eyes and wait until the capture is complete.
+
+            * Follow the gesture tutorial again and look straight at the camera until the capture finishes.
+
+            * Make sure the captured image is clear. If not, retake the picture.
+
+            * The app will verify whether your face matches your National ID (NID).
+
+            * Once verification is successful, you will receive a temporary PIN on your mobile.
+
+            * Enter the temporary PIN.
+
+            * Set a new 5-digit PIN and confirm it.
+
+
+
+2. How long does the verification process take when changing the PIN?
+ The entire verification process may take up to 1 minute after completing the face scan.
+
+
+3. Is National ID registration mandatory to change PIN from the app?
+ Yes. Merchants who registered their bKash account with any ID other than a National ID (NID) cannot change their PIN through the app.
+
+
+4. How much time is given to learn the gestures during face scan?
+ Merchants get 8 seconds to learn the gestures required for face scanning.
+
+
+5. Will closing the app during face verification interrupt the PIN change process?
+ Yes. If the app is closed during face verification, the PIN change attempt will fail and the process must be restarted.
+
+
+6. How will a merchant know if face verification has failed?
+ If the face verification fails, the failure message will be shown on the app screen.
+7. What is the validity period of a temporary PIN?
+ A temporary PIN is valid for 72 hours. If it expires, the merchant must restart the PIN change process in the app to receive a new temporary PIN and then set a new PIN.
+
+
+Agent Cash Out
+               1. Can I withdraw money from my Merchant Account to an Agent Point using the bKash Merchant App?
+Yes, with the bKash Merchant App you can easily withdraw money from your Merchant Account at any bKash Agent Point.
+
+               2. Can I save an Agent number for future cash out transactions?
+Yes, after completing an Agent Cash Out transaction, you can save the Agent number by assigning a name to it for future use.
+
+               3. How many recently used Agent numbers can I view for cash out?
+You can view up to the last 5 Agent numbers that you have used for Agent Cash Out transactions.
+
+               4. What should I do if I cannot use the Agent Cash Out feature?
+The Agent Cash Out feature is only available for selected bKash merchants. Please contact your nearest bKash representative for assistance.
+
+               5. What is the maximum number of Agent numbers I can save?
+There is no set limit on the number of Agent numbers you can save.
+
+               6. How will I know if my Agent Cash Out transfer was successful?
+Once the transaction is successful, you will see a message saying “Your Agent Cash Out was successful.”
+
+               7. If an Agent Cash Out transaction fails, will money still be deducted from my Merchant Account?
+No, if the transaction fails, no money will be deducted from your Merchant Account.
+
+Send Money
+                  1. Who can use the bKash Send Money feature?
+The Send Money feature is available only for bKash Personal Retail Accounts, Light B, Small, Medium, and Micro Merchants.
+
+                  2. How will Personal Retail Accounts, Light B, Small, Medium, and Micro Merchants benefit from Send Money?
+Through the Send Money feature, merchants can send money to any bKash customer account.
+
+                  3. How do I send money from the bKash Merchant App?
+From the home screen of the bKash Merchant App, tap the Send Money icon.
+You can send money by typing the customer’s number, searching by name, or scanning the customer’s QR code. If you scan a QR code, the amount input screen will appear directly. If you input the customer’s number, tap Proceed to go to the amount input screen.
+Enter the amount you wish to send and tap Proceed.
+Review the total send amount and, if needed, enter a reference. Then input your PIN and tap Confirm.
+Tap and hold to confirm Send Money.
+Once the transaction is successful, you will see a screen saying “Your Send Money was successful.” Tap Back to Home to return to the home screen.
+
+                  4. How can I view the list of recent Send Money transactions?
+The Send Money home page shows the list of your recent Send Money transactions.
+
+                  5. How many recent numbers can I view for Send Money?
+You can view up to the last 3 numbers used for Send Money transactions.
+
+                  6. What should I do if I cannot use the Send Money feature?
+The Send Money feature is only available for bKash Personal Retail Accounts, Light B, Small, Medium, and Micro Merchants.
+
+                  7. How will I know if my Send Money transaction was successful?
+If the transaction is successful, you will see a message on your Merchant App screen saying “Your Send Money was successful.”
+
+                  8. If a Send Money transaction fails, will money be deducted from my account?
+No, if the Send Money transaction fails, no money will be deducted from your account.
+
+                  9. Can I add a reference while sending money?
+Yes, you can add a reference on the PIN input screen while sending money. A reference of up to 50 characters is allowed.
+
+                  10. Will there be a charge for Send Money?
+Yes, bKash charges a fee for Send Money transactions as per its policy.
+
+                  11. How can I view details of completed Send Money transactions later in the Merchant App?
+You can view the details of completed Send Money transactions from both the Recent Transactions screen and the Transactions screen.
+
+                  12. Do I need an internet connection to use Send Money?
+Yes, an internet connection is required to use the bKash Merchant App.
+
+                  13. Will I need to grant contact access permission to use the Send Money feature?
+Yes, if you grant contact access, you can easily find customers from your device’s contact list to send money. However, you can also send money without contact permission by scanning the customer’s QR code or typing the customer’s number.
+
+                  14. How do I give the app permission to access my contacts?
+When you enter the Send Money feature, the app may ask for contact access permission—grant it at that point. You can also enable contact access for the bKash Merchant App from your phone’s settings.
+
+Assisted Pay Bill
+                     1. Can bills be paid using the bKash Merchant App?
+Yes, with the bKash Merchant App you can easily pay both postpaid and prepaid bills.
+
+                     2. How do I pay a prepaid bill using the bKash Merchant App?
+From the home screen, tap the Pay Bill feature.
+Select the biller whose bill you want to pay. After selecting, you will see the bill details input screen.
+Enter the biller account number and the customer’s mobile number, accept the terms and conditions, and tap Proceed to Pay Bill.
+Enter the bill amount or select from hot keys, then tap to go to the next step.
+Review the total amount including charges and confirm with your Merchant Account PIN.
+View the bill details and tap and hold Pay Bill to confirm.
+Your bill will be submitted for processing. The customer will be notified via SMS, and the merchant will be notified by SMS or in-app notification.
+
+                     3. How do I pay a postpaid bill using the bKash Merchant App?
+From the home screen, tap the Pay Bill feature.
+Select the biller. After selecting, you will see the bill details input screen.
+Enter the billing period, bill account number, and customer’s mobile number, accept the terms and conditions, and tap Proceed to Pay Bill.
+Review the bill details and proceed.
+Review the total amount including charges and confirm with your Merchant Account PIN.
+View the bill details and tap and hold Pay Bill to confirm.
+Your bill will be submitted for processing. The customer will be notified via SMS, and the merchant will be notified by SMS or in-app notification.
+
+                     4. Is it mandatory to input the customer’s mobile number for bill payment?
+Yes, it is mandatory. Bill payment-related SMS notifications will be sent to this number.
+
+                     5. Does the customer’s mobile number need to be linked to a bKash account?
+No, the customer’s mobile number does not need to be linked to a bKash account. Anyone can pay their bills at a merchant point.
+
+                     6. What should I do if my bill request fails but money is deducted from my Merchant Account?
+If money is deducted despite a failed bill payment, it will be refunded to your Merchant Account within 3 working days.
+
+                     7. How long does it take to receive confirmation or failure SMS/notifications after submitting a bill payment?
+Notifications are usually sent immediately once the bill is processed, unless there are network issues.
+
+                     8. What should be done if SMS notifications are not received due to network issues?
+The merchant can check the latest transaction or transaction details in the app for successful bill payments and inform the customer if needed.
+
+                     9. What happens if the biller does not update the paid bill?
+The paid amount will be refunded to the merchant’s account within 3 working days.
+
+                     10. How can I view details of paid bills later?
+You can view details of bills paid in the last 30 days from the transaction history in the bKash Merchant App. The account statement will also include paid bill information.
+
+                     11. If a bill payment fails for any reason, how will the customer be informed?
+The customer will be notified by SMS.
+
+                     12. If a bill payment fails and the amount is refunded to the merchant account, how will the customer be informed?
+The customer will receive an SMS from bKash regarding the failed bill payment and will then contact the merchant based on that information.
+
+                     13. If a bill payment fails, will the refunded amount include charges?
+Yes, the full amount including charges will be refunded to your Merchant Account.
+
+                     14. What should be done if a merchant does not notice the refund after the bill amount is returned?
+Refund notifications are sent via in-app notification and SMS.
+
+                     15. If a customer pays multiple bills and one bill payment fails, will both the merchant and customer be able to see the failed bill information?
+Yes, details of each failed bill payment will be sent via SMS to the customer and by SMS or in-app notification to the merchant. The failed payment will include the bill account number.
+
+                     16. What happens if the merchant inputs the wrong bill account number?
+If the wrong account number is entered and the bill is paid to another account, the merchant will be responsible for the mistake.
+
+                     17. What happens if the merchant inputs the wrong bill amount?
+The merchant will be responsible and may resolve the matter directly with the customer.
+
+                     18. What happens if the merchant inputs the wrong customer mobile number?
+The merchant can forward the SMS received on their Merchant Account to the customer so the customer can view the bill information.
+
+                     19. Can receipts for paid bills be obtained from the bKash Merchant App?
+Yes, receipts for any Assisted Pay Bill payment can be downloaded from the app.
+
+                     20. How do I download a bill receipt?
+From the home screen, tap the Pay Bill icon.
+On the Pay Bill home screen, tap the Receipt feature.
+You will see a list of receipts for bills paid through your Merchant Account.
+Filter by customer mobile number or bill account number to find a specific receipt.
+Tap the Download button to download the receipt.
+
+                     21. How many days of bill receipts can be downloaded from the app?
+Receipts for bills paid within the last 30 days can be downloaded.
+
+                     22. Can PRA merchants use the Assisted Pay Bill feature?
+Yes, PRA merchants can use this feature.
+
+                     23. What should be done if the customer does not receive a token SMS due to network issues?
+The customer should go to their phone’s message option, type the meter number, and send it via SMS to 04445616247. The token number will then be sent to the customer via SMS.
+Merchant Payment
+                        1. Can I make payments from my Merchant Account to another merchant using the bKash Merchant App?
+Yes, with the bKash Merchant App you can easily make payments to any bKash merchant by typing their number or scanning their QR code.
+
+                        2. How do I make a merchant payment from the bKash Merchant App?
+From the home screen, tap the Merchant Payment icon.
+You can pay by typing the merchant’s number, searching by name, or scanning their QR code. If you scan a QR code, the amount input screen will appear directly. If you input the merchant’s number, tap Proceed to go to the amount input screen.
+Enter the payment amount and tap Proceed.
+Review the total payment amount and, if needed, add a reference. Then input your PIN and tap Confirm.
+Tap and hold to confirm the payment.
+Once successful, you will see a screen saying “Your Merchant Payment was successful.” Tap Back to Home to return to the home screen.
+
+                        3. Can I view a list of merchants I have recently made payments to?
+Yes, from the Merchant App home screen you can view the list of recently paid merchants.
+
+                        4. How many recent merchant numbers can I view for payments?
+You can view up to the last 20 merchant numbers to which you have made payments.
+
+                        5. What should I do if I cannot use the Merchant Payment feature?
+Please contact your nearest bKash representative.
+
+                        6. How will I know if my merchant payment was successful?
+Once the payment is completed, a message saying “Your Merchant Payment was successful” will appear on your screen.
+
+                        7. If a merchant payment fails, will money be deducted from my Merchant Account?
+No, if the payment fails, no money will be deducted from your account.
+
+                        8. Can I add a payment reference while making a merchant payment?
+Yes, you can add a payment reference on the PIN input screen while making a payment.
+
+                        9. Will there be a charge for merchant payments?
+Yes, merchant payments are subject to charges as determined by bKash.
+
+                        10. How can I view details of completed merchant payments later in the app?
+You can view details of completed merchant payments from both the Recent Transactions screen and the Transactions screen in the bKash Merchant App.
+
+                        11. What should I do if I cannot input an amount after scanning a QR code for merchant payment?
+If you are paying a merchant using their dynamic QR code, the amount will automatically appear on the amount input screen. In this case, you cannot change the amount yourself—you must request the merchant to adjust the amount.
+
+
+
+Cancel Transaction
+                           1. What is the Cancel Transaction feature?
+The Cancel Transaction feature allows a merchant to cancel any bKash customer payment. For example, if a merchant receives BDT 1000 from a customer via bKash, but the actual product price was BDT 1010 and the customer mistakenly paid BDT 1000, the merchant can cancel the BDT 1000 transaction through the Cancel Transaction feature. Once canceled, the full amount will be instantly refunded to the customer.
+
+                           2. How can I cancel a transaction using the Cancel Transaction feature?
+From the bKash Merchant App homepage, tap the Cancel Transaction icon.
+Search using the customer number or transaction ID.
+Select the specific transaction from the list and go to its details screen.
+Choose the reason for cancellation.
+Enter your Merchant Account PIN.
+Confirm the PIN.
+The transaction will then be canceled.
+From the transaction history, find the canceled transaction.
+Tap on it to view the cancellation details.
+
+                           3. How can I find a canceled transaction in the bKash Merchant App?
+You can find canceled transactions in the Recent Transactions, Transaction History, or Search Transactions sections. Tap on the canceled transaction to view details.
+
+                           4. How long after completion can a payment transaction be canceled?
+Transactions can be canceled within 24 hours of completion.
+
+                           5. Is the Cancel Transaction feature applicable for all types of transactions?
+No, it is only available for customer payments. It does not apply to Pay Bill, Merchant Payment, Send Money, Agent Cash Out, or bKash-to-Card transactions.
+
+                           6. Is sufficient balance required in the merchant account to use the Cancel Transaction feature?
+Yes, the merchant account must have enough balance equal to the transaction amount to process the cancellation.
+
+                           7. What if the merchant account does not have sufficient balance to cancel a transaction?
+If there is insufficient balance, the merchant must collect cash from the customer and refund manually.
+
+                           8. Can a transaction be partially canceled?
+No, only full transaction amounts can be canceled. For example, if a customer paid BDT 1000, canceling the transaction will refund the full BDT 1000.
+
+                           9. What happens if the canceled transaction had a cashback?
+If the transaction included cashback, the cashback amount will be automatically deducted from the customer’s account once the transaction is canceled.
+
+                           10. Where can I find details of a canceled transaction in the Merchant App?
+Both merchant and customer will receive SMS and notifications. Additionally, from the transaction history in the app, you can view canceled transactions along with cancellation reasons.
+
+                           11. Where can customers find details of a canceled transaction in their app?
+Customers will receive an SMS once the refund is credited. They can also check their account balance to confirm the refunded amount.
+
+                           12. What should I do if I fail to cancel a transaction?
+First, check if 24 hours have passed since the transaction. If more than 24 hours have passed, the feature will not work. If not, and cancellation still fails, contact your assigned bKash representative.
+
+                           13. Is there any charge for canceling a transaction?
+No, there are no charges for canceling a transaction using this feature.
+
+                           14. Which merchants can use the Cancel Transaction feature?
+All bKash merchants using the Merchant App can use this feature. Merchants not using the app cannot access this feature, as it is only available within the bKash Merchant App.
+
+STR/SAR Form
+                              1. What is the STR/SAR Form feature in the bKash Merchant App?
+Through the Suspicious Transaction Report (STR) and Suspicious Activity Report (SAR), merchants can notify bKash about suspicious transactions or activities. From different sections of the Merchant App, merchants can raise an STR/SAR report against any suspicious transaction or activity.
+
+                              2. When should a merchant raise an STR?
+A merchant should raise an STR after a suspicious transaction has taken place. Such suspicious transactions may relate to all types of merchant-authorized transactions, including both P2B and B2B transactions.
+
+                              3. When should a merchant raise an SAR?
+A merchant should raise an SAR to report suspicious activities of a bKash account user. SAR can be raised against both individual and entity accounts.
+
+                              4. What types of transactions or activities can merchants report through the STR/SAR Form?
+
+                                 * Criminal transactions
+
+                                 * Fraudulent transactions
+
+                                 * Suspicious transactions
+
+                                 * Hundi
+
+                                 * Drug trafficking
+
+                                 * Kidnapping/Ransom
+
+                                 * Cryptocurrency
+
+                                 * Gambling
+
+                                 * Bitcoin
+
+                                 * Police/Law enforcement issues
+
+                                 * Illegal arms trade
+
+                                 * Corruption and bribery
+
+                                 * Extortion
+
+                                 * Women and child trafficking
+
+                                 * Others
+
+                                    5. How can merchants raise an STR/SAR using the bKash Merchant App?
+From the app’s homepage, go to Other Services and click the STR/SAR Form feature.
+A browser window will open within the Merchant App.
+Select either STR or SAR.
+Fill in all fields marked with a star (*) and review the information.
+If all information is correct, click Submit.
+
+                                    6. What should I do if I cannot submit the STR or SAR form?
+Check that all mandatory fields marked with a star (*) are filled. If the issue persists even after providing all required information, contact your assigned bKash representative.
+
+                                    7. How will a merchant be sure that an STR or SAR has been submitted?
+The Merchant App will confirm every successful STR/SAR submission.
+
+                                    8. Can a submitted STR or SAR be canceled or modified?
+No, once submitted, an STR/SAR cannot be canceled or modified.
+
+                                    9. What actions will be taken after an STR or SAR is raised?
+All STR/SAR submissions will be investigated by the bKash AML & CFT Department. The department reserves full authority to conduct investigations and, in compliance with “Tipping-Off” regulations, will refrain from sharing information with the reporting merchant.
+
+Counter
+                                       1. What is a Counter?
+A Counter is a special feature in your Merchant App that helps expand your ability to receive bKash payments. With this feature, you can create counters as per your business needs and make transactions easier. When a payment is received through Counter QR, both the counter user and the merchant will instantly get payment notifications.
+
+                                       2. How do I start using the Counter feature?
+From the home screen, tap the Counter feature.
+On the Counter screen, you can check your counter status.
+To activate a counter, tap Show QR. The QR screen will appear where you can see the QR code and QR number. Ask the counter user to scan the QR code from the Counter Login screen or provide them with the QR number.
+To deactivate a counter, tap Inactive.
+
+                                       3. How does a counter user log in to the Merchant App?
+Download the bKash Merchant App from the Play Store and open it from the application list.
+Allow permissions for phone calls and location.
+Tap Log in as Counter on the screen.
+You will see the Counter Login screen.
+To register as a counter, either enter the QR number or tap the QR icon to scan the code.
+Once verified, you will see a welcome screen saying “Counter registration successful.” Tap Get Started to go to the Counter home screen.
+
+                                       4. Where can I find the QR code or QR number for Counter registration?
+From the home screen, tap the Counter feature under Other Services. Tap Show QR to view the QR number and QR code. The counter user can scan the code or use the QR number to log in.
+
+                                       5. What features are available to a counter user?
+They can scroll and view the last 10 transactions on the home screen.
+They can receive bKash payments through Counter QR. By tapping the QR icon on the top-right of the Counter home screen, they can display the Counter QR code for customers to scan and pay.
+By tapping the search icon on the top-right, they can search transactions. A counter user can only search for transactions made through their own counter.
+By tapping the download icon on the top-right, they can select a time period to download a statement, which will be sent to the merchant’s email within 24 hours.
+They will get instant notifications for each payment received.
+
+                                       6. Can a counter user cash out money from my Merchant Account?
+No, a counter user cannot cash out.
+
+                                       7. Can a counter user view my Merchant Account balance?
+No, a counter user cannot view your account balance.
+
+                                       8. How long will a counter remain active?
+A counter will remain active for 15 days after activation. However, if you deactivate it from your Merchant App, it will be closed immediately.
+
+                                       9. How do I update my email?
+Go to Profile Information under Other sections in the Merchant App. Tap Change, enter your new email, and confirm. Your email will then be updated.
+
+                                       10. How many times can a statement be downloaded in one day from a counter?
+At present, a counter can download statements up to 5 times per day.
+
+                                       11. For how many days can a statement be downloaded from a counter?
+By selecting 2 specific time slots, a counter can download a 1-day statement, which will be sent to the merchant’s email within 24 hours.
+
+                                       12. To which email will the counter statement be sent?
+Counter statements will be sent to the merchant’s email.
+
+                                       13. Do I need to share my Merchant Account PIN with a counter user?
+No, you should never share your Merchant Account PIN. For your account’s security, do not share your PIN with anyone.
+
+                                       14. Is a Merchant SIM required for logging in as a counter?
+No, a counter user does not need to have a Merchant SIM in their phone to log in as a counter.
+Savings Registration
+                                          1. Who can I refer for Savings?
+You can refer customers who are registered through the bKash App or the bKash Merchant App, or those who have updated their information through the “Update Information” option in the bKash App. To refer for Savings, the customer must have a valid bKash account number, an updated bKash account with National ID, the bKash App, sufficient balance to open the Savings account, and a nominee’s National ID. Customers who have not yet updated their information can update it through the “Update Information” option in the bKash App and then open a Savings scheme.
+
+                                          2. What are the benefits of having Savings?
+Through the bKash App, customers can open a Savings scheme with financial institutions/banks approved by Bangladesh Bank. No paperwork is required, and Savings can be opened instantly. At the end of the term, the principal and profit will be automatically credited to the customer’s bKash account, which can be cashed out without any charge.
+
+                                          3. What is Savings Registration?
+Savings Registration is a new service where a merchant can assist a customer in opening a bKash Savings account through the Merchant App. Customers can also open Savings through their own bKash App. Merchants earn an instant commission for every successful Savings registration.
+
+                                          4. How can I do Savings Registration?
+From the Merchant App:
+• Tap Savings Registration
+• From the Savings Dashboard, tap Open New Savings
+ • Tap I have informed the customer
+ • Enter the customer’s bKash account number
+• Select the type of Savings
+• Select term, deposit type, and deposit amount
+• Select the financial institution
+• Enter the nominee’s information and tap Confirm
+ • Review Savings details and tap Confirm again
+• A confirmation screen will appear showing the request has been submitted
+
+                                          5. How can I earn commission through Savings Registration?
+Merchants earn partial commission instantly upon successful Savings registration. Commission is distributed according to campaign terms and conditions.
+
+                                          6. How can I help a customer complete a successful Savings Registration?
+After registration from the Merchant App, the customer will receive a Savings Registration request notification in their bKash App. The customer must approve it, and the first deposit will be deducted from their bKash account to the selected bank or financial institution. Once completed, the Savings account will be successfully opened.
+
+                                          7. How will I know if a Savings Registration request is accepted, declined, or pending?
+The status will be shown in the Savings Dashboard of the Merchant App.
+
+                                          8. How long does it take for a Savings Registration request to be accepted or declined?
+The customer can accept or decline immediately. If no action is taken, the request will remain pending. The customer must accept or decline within 48 hours.
+
+                                          9. If a customer does not accept or declines the Savings Registration request, will I still get commission?
+No. Commission is only given if the customer accepts the request. If not, the request will automatically be canceled after 48–72 hours, and no commission will be paid.
+
+                                          10. What happens if the customer mistakenly declines the Savings Registration request?
+If the customer declines by mistake, the merchant can refer the customer again for registration.
+
+                                          11. Will installment amounts be deducted from the merchant’s account?
+No, installments will be deducted from the customer’s bKash account.
+
+                                          12. How will I know why a Savings Registration was unsuccessful?
+Details can be checked in the Savings Dashboard. By tapping the registration details, you can view the specific reason under the Savings Request option.
+
+                                          13. Can I register Savings for the same customer multiple times?
+Yes, you can refer a customer multiple times. However, commissions will only be paid for successful registrations, as per campaign terms.
+
+                                          14. Why/when can I not send a Savings Registration request to a customer?
+If a customer already has one or more pending Savings Registration requests, new requests cannot be sent until the pending ones are resolved.
+
+                                          15. Why/when would I be ineligible for Savings Registration?
+If customers cancel requests because they were unaware of them, they may also report the merchant. Multiple reports against a merchant may result in disqualification from doing Savings Registrations.
+
+                                          16. When will I receive commission for a successful Savings?
+Merchants receive partial commission as soon as a customer successfully opens a Savings account (i.e., when the customer accepts the request and the first installment is deducted from their account). The commission amount and total per referral depend on campaign terms.
+
+                                          17. Does the customer need to have sufficient balance when I send the referral or when they accept the request?
+The customer must have sufficient balance in their bKash account at the time of accepting the referral request to open the Savings account successfully.
+
+Payment Voice Notification
+                                             1. How does the Payment Voice Notification feature work?
+From the Merchant App home screen, tap the menu icon.
+Tap Voice Notification.
+Toggle it on to enable payment voice notifications.
+Once enabled, select whether you want to hear the notifications in Bangla or English.
+You will now hear a voice notification for every customer payment.
+
+                                             2. Which merchants can use the Payment Voice Notification feature?
+Any merchant using the app can use this feature.
+
+                                             3. Is an internet connection required to use the Payment Voice Notification feature?
+Yes, an internet connection is required.
+
+                                             4. How do I turn off the voice notifications?
+From the Merchant App home screen, tap the menu icon.
+Tap Voice Notification.
+Toggle it off to stop receiving voice notifications for payments.
+
+                                             5. In which languages are the Payment Voice Notifications available?
+Currently, they are available in Bangla and English.
+
+                                             6. What should I do if I face issues using the Payment Voice Notification feature?
+Please contact your nearest bKash representative.
+
+
+Mobile Recharge
+                                                1. Which types of merchants can do mobile recharge from the bKash Merchant App?
+Merchants with Merchant Plus Light A, Merchant Plus Light B, Small, Medium, Micro, and Personal Retail Accounts can use the bKash Merchant App for mobile recharge.
+
+                                                2. How can I recharge mobile from the Merchant App?
+From the home screen, tap the Mobile Recharge icon.
+Enter the number you want to recharge or select from your contact list.
+Select the operator.
+Enter the amount or select from hot keys. To choose specific packages, tap Internet, Minutes, Call Rate, or Bundle tabs.
+Tap Proceed or tap View Offers to see available offers, then select an offer and tap Proceed.
+Review the recharge details. Select Prepaid, Postpaid, or Skitto.
+Enter your PIN and tap Confirm.
+Review the details again and tap and hold to complete the recharge.
+
+                                                3. Is there any charge for using the Mobile Recharge feature?
+No, currently there are no charges.
+
+                                                4. Is there any commission for using the Mobile Recharge feature?
+No, currently there is no commission.
+
+                                                5. Can I recharge numbers other than bKash merchant numbers?
+Yes, you can recharge any GP, Robi, Airtel, Banglalink, Teletalk, and Skitto numbers.
+
+                                                6. How will I know if a recharge transaction is successful?
+You will get an in-app notification for successful recharge, and details can be viewed in the Transactions section.
+
+                                                7. Where can I see details of mobile recharge transactions?
+You can view details in the Transactions section of the Merchant App.
+
+                                                8. What should I do if there is a problem with a recharge transaction?
+Contact your nearest bKash representative or the bKash helpline at 16247.
+
+                                                9. How will I know if a specific recharge amount has an offer?
+On the amount input screen, after entering an amount and tapping Proceed, any available offer for that amount will appear. You can then either proceed with that amount or tap Change to enter a different one.
+
+                                                10. What is a Special Offer?
+If you input a certain amount, you can tap View Offers to see nearby special offers related to that amount.
+
+                                                11. I have changed my mobile operator, but I cannot find the option to select operator during recharge. How can I change the operator?
+If you have already recharged that number through the Merchant App, then next time while recharging, tap the operator icon above the amount input screen to change the operator.
+
+                                                12. What should I do if I cannot find the required permission to use the Mobile Recharge feature?
+Please contact your nearest bKash representative. Once the required permission is granted, you will be able to use the Mobile Recharge feature immediately.
+
+
+
+
+
+bKash to Card
+                                                   1. What is the bKash to Card feature in the Merchant App?
+Through the bKash to Card feature, merchants can easily transfer money from their bKash account to their own Visa debit card anytime. Currently, this service is available only for Visa debit cards. Other cards will be added in the future.
+
+                                                   2. How to transfer funds from the Merchant App to a card?
+From the home screen, tap the bKash to Card icon.
+Enter your 16-digit Visa card number.
+Enter the amount and tap Proceed.
+Enter your bKash PIN.
+Confirm the bKash PIN again.
+Tap and hold to complete the transfer.
+Once successful, you will see the confirmation on screen.
+
+                                                   3. Can I do bKash to Card using USSD?
+No, currently it can only be done through the Merchant App.
+
+                                                   4. Can all merchants use the bKash to Card feature?
+Yes, Personal Retail, Small, Medium, Micro, and Light B merchants can use it.
+
+                                                   5. Is there any charge for using the feature?
+Yes, a 1.39% charge applies for each transaction.
+
+                                                   6. How long does it take for money to be transferred to a Visa debit card?
+If Fast Fund is enabled on your card, the money will be deposited within 30 minutes of a successful transfer. If not, it may take up to 3 working days.
+
+                                                   7. How will I know if my transaction was successful?
+You will get an in-app notification and can see details in the Transactions section.
+
+                                                   8. What are the daily and monthly limits for bKash to Card transactions?
+
+                                                      * For Merchant Plus Light B, Small, Medium, and Micro:
+Per transaction: 50,000 BDT
+Daily limit: 500,000 BDT
+Monthly limit: 2,000,000 BDT
+Minimum per transaction: 1 BDT
+
+                                                      * For PRA (A & B) (Agent cash out, ATM cash out, and Merchant wallet to Visa debit card):
+Per transaction: 20,000 BDT
+Daily limit: 20,000 BDT
+Monthly limit: 300,000 BDT
+Max transactions per day: 5
+Max transactions per month: 30
+
+                                                      * For PRA C:
+Minimum per transaction: 1 BDT
+No limit on transactions per day or per month
+Monthly limit: 1,000,000 BDT
+
+                                                         9. What does it mean if I see “Submitted” on screen?
+It means the transaction is being processed. Please wait up to 3 working days. If after that you don’t receive confirmation or the money back, contact bKash.
+
+                                                         10. Where can I see details of my transactions?
+In the Transactions section of the Merchant App.
+
+                                                         11. What happens if I transfer to the wrong Visa card number?
+The merchant will be responsible for the mistake.
+
+                                                         12. Why did my bank deduct money again after the transfer?
+Please contact your card-issuing bank.
+
+                                                         13. What should I do if the wrong amount was sent?
+Please contact your card-issuing bank.
+
+                                                         14. My money was deducted, but even after 3 working days it has not reached my bank account. What should I do?
+First, contact your card-issuing bank. If the issue is not resolved, file a written complaint to bKash at complaint.management@bkash.com or visit Customer Care. Include: bank name, transaction date, amount, first 6 and last 4 digits of the Visa debit card. Resolution may take up to 45 working days.
+
+                                                         15. Why is my transfer failing when I try to send the full account balance to my card?
+Because the account does not have enough extra balance to cover the bKash charge, the transaction fails.
+
+Mobile Recharge – My Offer
+                                                            1. What is the My Offer feature?
+Mobile operators provide special benefits to their customers through the My Offer feature.
+
+                                                            2. How can I check My Offer from the Merchant App?
+When recharging for Airtel, Banglalink, GP, or Robi numbers, after entering the recharge amount you will see a My Offer tab on the screen.
+If the number has any available offer, it will be shown in the My Offer section.
+To avail it, tap on the specific offer and complete the recharge by entering your PIN.
+
+                                                            3. Is My Offer available for everyone?
+No. Only customers selected by the mobile operator will see the offers in the My Offer section.
+
+Notifications & Inbox
+                                                               1. How does the push notification feature of the Merchant App work?
+All types of notifications sent to the merchant can be viewed from the mobile’s notification drawer.
+
+                                                               2. How can I see the details of a notification?
+Tap on any notification from the notification drawer to view details.
+
+                                                                  * If you are logged in, a modal will appear on the home screen of the app with the notification details.
+
+                                                                  * If you are logged out, a modal will appear on the login screen of the app with the notification details.
+
+                                                                     3. What is the Notification Inbox?
+Most notifications sent to merchants are stored in the inbox. Merchants can view current and expired notifications from the inbox at any time, in addition to the notification drawer.
+
+                                                                     4. How can I know how many unread notifications I have?
+On the home screen, the number of unread notifications will appear on the inbox icon at the top right.
+
+                                                                     5. What type of information is usually included in notifications?
+
+                                                                        * If there is any campaign or offer for you, you will be notified.
+
+                                                                        * Notices will also be shared through notifications.
+
+                                                                        * For convenience, campaigns and notices are stored separately in different tabs inside the inbox.
+
+                                                                           6. How long will notifications remain in the inbox after expiry?
+Up to 30 days.
+
+                                                                           7. What is the maximum number of notifications that can be stored in the inbox?
+Up to 1000.
+
+                                                                           8. What is the difference between the Campaign and Notice tabs in the notification inbox?
+
+                                                                              * Campaign tab: Stores offer-related notifications.
+
+                                                                              * Notice tab: Stores other notifications provided by bKash (important information for merchants, new feature updates, video tutorials, survey/feedback forms, etc.).
+
+Daily Transaction Summary
+                                                                                 1. How can I view the summary of transactions for a specific day from the Merchant App?
+From the home page of the Merchant App, tap on Transactions.
+Tap on Transaction Summary.
+In the Daily Summary tab, you can view the summary for today’s date and also select a specific date from the calendar to view that day’s summary.
+
+                                                                                 2. What will be included in the Daily Summary?
+The Daily Summary will show a total of 11 date cards including today and previous dates, from which you can select as needed.
+From the calendar, you can also view summaries for up to the last 30 days including today.
+After selecting a date from the calendar, tap Go back to today to return to today’s summary.
+You can check the latest update time for today’s summary under the Last Updated option.
+If the In, Out, and Fee filters are not selected, you will see:
+
+                                                                                    * Starting and ending balance for that day
+
+                                                                                    * Total number and amount of debit and credit transactions
+
+                                                                                       3. What will be shown under the In filter?
+If the In filter is selected without choosing a date from the calendar, you will see today’s:
+
+                                                                                          * Total received amount
+
+                                                                                          * Summary of all credit transactions (count and amount)
+If the In filter is selected with a date from the calendar, you will see the same information for that chosen date.
+
+                                                                                             4. What will be shown under the Out filter?
+If the Out filter is selected without choosing a date from the calendar, you will see today’s:
+
+                                                                                                * Total paid amount
+
+                                                                                                * Summary of all debit transactions (count and amount)
+If the Out filter is selected with a date from the calendar, you will see the same information for that chosen date.
+
+                                                                                                   5. What will be shown under the Fee filter?
+If the Fee filter is selected without choosing a date from the calendar, you will see today’s:
+
+                                                                                                      * Total fee amount
+
+                                                                                                      * Summary of all debit and credit transactions including their fees (count and amount)
+If the Fee filter is selected with a date from the calendar, you will see the same information for that chosen date.
+
+                                                                                                         6. For how many days can I view the Daily Summary?
+You can view summaries for up to the last 30 days including today. Dates can be selected from the calendar.
+
+                                                                                                         7. How often is today’s Daily Summary updated?
+The summary for today is updated approximately every 1 hour.
+
+                                                                                                         8. What is the bKash fee shown in the Daily Transaction Summary?
+
+                                                                                                            * Without any filter: The total of debit transaction fees and credit transaction fees.
+
+                                                                                                            * Under the Out filter: The total debit transaction fees.
+
+                                                                                                            * Under the Fee filter: The total of debit transaction fees and credit transaction fees.
+Monthly Transaction Summary
+                                                                                                               1. How can I view the summary of transactions for a specific month from the Merchant App?
+From the home page of the Merchant App, tap on Transactions.
+Tap on Transaction Summary.
+Tap on Monthly Summary.
+In the Monthly Summary tab, you can view the summary of the current month.
+
+                                                                                                               2. What will be included in the Monthly Summary?
+The Monthly Summary will show a total of 6 month cards including the current month, from which you can select as needed.
+You can check the latest update time for the current month’s summary under the Last Updated option.
+If the In, Out, and Fee filters are not selected, you will see:
+
+                                                                                                                  * Starting and ending balance of the month
+
+                                                                                                                  * Total number and amount of debit and credit transactions
+
+                                                                                                                     3. What will be shown under the In filter?
+If the In filter is selected without choosing a month card, you will see for the current month:
+
+                                                                                                                        * Summary of all credit transactions (count and amount)
+
+                                                                                                                        * Total received amount
+If the In filter is selected with a month card, you will see the same information for that chosen month.
+
+                                                                                                                           4. What will be shown under the Out filter?
+If the Out filter is selected without choosing a month card, you will see for the current month:
+
+                                                                                                                              * Summary of all debit transactions (count and amount)
+
+                                                                                                                              * Total paid amount
+If the Out filter is selected with a month card, you will see the same information for that chosen month.
+
+                                                                                                                                 5. What will be shown under the Fee filter?
+If the Fee filter is selected without choosing a month card, you will see for the current month:
+
+                                                                                                                                    * Total number of debit and credit transactions along with fee amounts
+
+                                                                                                                                    * Total fee amount
+If the Fee filter is selected with a month card, you will see the same information for that chosen month.
+
+                                                                                                                                       6. For how many months can I view the Monthly Summary?
+You can view the Monthly Summary for up to the last 6 months including the current month.
+
+                                                                                                                                       7. How often is the current month’s summary updated?
+The summary for the current month is updated approximately every 1 hour.
+
+                                                                                                                                       8. What is the bKash fee shown in the Monthly Transaction Summary?
+
+                                                                                                                                          * Without any filter: The total of debit transaction fees and credit transaction fees
+
+                                                                                                                                          * Under the Out filter: The total debit transaction fees
+
+                                                                                                                                          * Under the Fee filter: The total of debit transaction fees and credit transaction fees
+
+Limit
+                                                                                                                                             1. What is the Limit feature?
+Through the Limit feature, merchants can view the maximum number and amount of various types of transactions on a daily and monthly basis. They can also see the number and amount already used for a specific transaction.
+
+                                                                                                                                             2. How does the Limit feature work?
+
+                                                                                                                                                * From the home screen of the Merchant App, tap the menu icon.
+
+                                                                                                                                                * Tap the Limit icon.
+
+                                                                                                                                                * You can view daily limits.
+
+                                                                                                                                                * To view monthly limits, tap on Monthly Limit.
+
+                                                                                                                                                   3. What will be included in the Limit feature?
+
+                                                                                                                                                      * The maximum limit of transaction counts and amounts, along with the number and amount already used, will be shown.
+
+                                                                                                                                                      * When there is a limit on the transaction amount, a progress bar will display the usage against the set limit.
+
+                                                                                                                                                      * If a specific service does not have a limit on count or amount, only the number and amount used will be shown.
+
+                                                                                                                                                      * If the count or amount limit is exceeded, an Over Limit icon will appear.
+
+                                                                                                                                                      * The maximum amount per transaction will only be shown in the Daily Limit section.
+
+                                                                                                                                                         4. What will be shown in the Daily Limit?
+The Daily Limit section will show the maximum daily transaction count and amount for different types of transactions. You will also be able to see the number and amount already used for specific transactions.
+
+                                                                                                                                                         5. What will be shown in the Monthly Limit?
+The Monthly Limit section will show the maximum monthly transaction count and amount for different types of transactions. You will also be able to see the number and amount already used for specific transactions.
+
+                                                                                                                                                         6. How will I know if a service limit is updated?
+Whenever a limit is updated, you can always view it from the Daily Limit and Monthly Limit sections.
+
+Prayer & Fasting
+What is the Prayer & Fasting feature in the bKash Merchant App?
+                                                                                                                                                            * Through the Prayer & Fasting feature, merchants can now see the daily 5 prayer times as well as Iftar and Sehri timings directly from the Merchant App. They can also change their district based on their location.
+
+How many districts are available for location change?
+                                                                                                                                                               * You can view daily 5 prayer times along with Iftar and Sehri schedules for all 64 districts of Bangladesh, including Dhaka.
+
+How can I change the district?
+                                                                                                                                                                  * From the homepage, tap Change District under the Prayer & Fasting feature and select your district from the options.
+
+                                                                                                                                                                  * Or, from the homepage, tap Details under the Prayer & Fasting feature and select your district from Settings.
+
+Which madhhabs (schools of thought) can be selected in the Prayer & Fasting feature?
+                                                                                                                                                                     * You can choose between Hanafi and Shafi’i madhhabs.
+
+Which methods are available for determining prayer times in the Prayer & Fasting feature?
+                                                                                                                                                                        * University of Islamic Sciences, Karachi
+
+                                                                                                                                                                        * Muslim World League
+
+                                                                                                                                                                        * Islamic Society of North America

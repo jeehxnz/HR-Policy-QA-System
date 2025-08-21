@@ -11,7 +11,7 @@ import os
 from dotenv import load_dotenv
 from services.file_processing_service import FileProcessingService
 from services.tokenization_service import TokenizationService
-from lib.chromaDBClient import get_chroma_client
+from lib.chromaDBClient import ChromaDBClient
 from config import (
     CHROMA_DB_DIR,
     UNPROCESSED_FILES_DIR,
@@ -20,39 +20,39 @@ from config import (
 )
 
 load_dotenv()
-MERCHANT_FAQ_COLLECTION_NAME = os.environ.get('MERCHANT_FAQ_COLLECTION_NAME')
-SENTENCE_TRANSFORMER_MODEL = os.environ.get('SENTENCE_TRANSFORMER_MODEL')
+ENGLISH_MERCHANT_FAQ_COLLECTION_NAME = os.environ.get('ENGLISH_MERCHANT_FAQ_COLLECTION_NAME')
+ENGLISH_SENTENCE_TRANSFORMER_MODEL = os.environ.get('ENGLISH_SENTENCE_TRANSFORMER_MODEL')
+
+
 
 async def main():
-    collection_name = MERCHANT_FAQ_COLLECTION_NAME
+    assert isinstance(ENGLISH_SENTENCE_TRANSFORMER_MODEL, str)
+    assert isinstance(ENGLISH_MERCHANT_FAQ_COLLECTION_NAME, str)
+    collection_name = ENGLISH_MERCHANT_FAQ_COLLECTION_NAME
+
+    file_name = input("Enter the file name of the file you want to process: ")
 
     file_processing_service = FileProcessingService()
     tokenization_service = TokenizationService(
-        model_name=SENTENCE_TRANSFORMER_MODEL,
+        model_name=ENGLISH_SENTENCE_TRANSFORMER_MODEL,
         chunk_size_tokens=510,  # not 512
         chunk_overlap_tokens=50,
     )
-    chroma_client = get_chroma_client()
-
-    # Initialize Chroma client (db path + create default collection)
-    chroma_client.initialize(db_path=CHROMA_DB_DIR, collection_name=collection_name)
+    chroma_client = ChromaDBClient(COLLECTION_NAME=collection_name, CHROMA_DB_PATH=CHROMA_DB_DIR)
+    chroma_client.initialize()
 
     # Empty out tmp dirs (do not clear UNPROCESSED_FILES_DIR so PDFs remain)
     file_processing_service.clear_tmp_file_dirs(False)
 
-    # 1) Discover inputs in tmp/unprocessed_files
-    # pdf_files = [p.name for p in UNPROCESSED_FILES_DIR.glob('*.pdf')]
-    # txt_files = [p.name for p in UNPROCESSED_FILES_DIR.glob('*.txt')]
-    # files = pdf_files + txt_files
-    # if not files:
-    #     print(f"No input files found in {UNPROCESSED_FILES_DIR}")
-    #     return
-
-    files = UNPROCESSED_FILES_DIR.glob('bKash-Merchant-FAQ-v3.txt')
-    print(f"Files: {files}")
+    # Find the file in the unprocessed directory
+    file_path = UNPROCESSED_FILES_DIR / file_name
+    if not file_path.exists():
+        raise FileNotFoundError(f"File {file_name} not found in {UNPROCESSED_FILES_DIR}")
+    
+    print(f"Processing file: {file_path}")
 
     # 2) Convert to cleaned text (auto-detects file types)
-    cleaned_files = await file_processing_service.prepare_cleaned_txt_files(files)
+    cleaned_files = await file_processing_service.prepare_cleaned_txt_files([file_name])
     cleaned_paths = [Path(p) for p in cleaned_files]
 
     # 3) Run tokenization pipeline (chunks + embeddings + source map)
@@ -82,7 +82,6 @@ async def main():
 
     # Add to Chroma via helper
     chroma_client.add_documents(
-        collection_name=collection_name,
         documents=all_chunks,
         metadatas=all_metadatas,
         embeddings=embeddings.tolist(),

@@ -2,7 +2,7 @@
 Singleton ChromaDB Client for HR Policy QA System
 
 This module provides a simple singleton ChromaDB client that manages database connections
-and collections for the HR Policy QA System. It ensures only one instance of the
+and collections. It ensures only one instance of the
 client exists throughout the application lifecycle.
 """
 
@@ -26,24 +26,20 @@ class ChromaDBClient:
     - Collection creation and management
     """
     
-    _instance: Optional['ChromaDBClient'] = None
-    _initialized: bool = False
+
     
-    def __new__(cls) -> 'ChromaDBClient':
-        """Ensure only one instance of the client exists."""
-        if cls._instance is None:
-            cls._instance = super(ChromaDBClient, cls).__new__(cls)
-        return cls._instance
     
-    def __init__(self):
-        """Initialize the ChromaDB client if not already initialized."""
-        if not self._initialized:
-            self._client: Optional[chromadb.Client] = None
-            self._db_path: Optional[Path] = None
-            self._initialized = True
-            logger.info("ChromaDBClient singleton created")
+    def __init__(self,
+                 COLLECTION_NAME : str,
+                 CHROMA_DB_PATH: Path = CHROMA_DB_DIR
+                 ):
+        """Initialize the ChromaDB client."""
+        self._db_path: Path = CHROMA_DB_PATH
+        self.collection_name: str = COLLECTION_NAME
+        self._client: Optional[chromadb.Client] = None
+        logger.info(f"ChromaDBClient instance created for collection: {self.collection_name}")
     
-    def initialize(self, db_path: Optional[Path] = None, collection_name: str = "hr_policy_qa") -> None:
+    def initialize(self) -> None:
         """
         Initialize the ChromaDB client with database path and collection.
         
@@ -55,11 +51,6 @@ class ChromaDBClient:
             logger.warning("ChromaDB client already initialized")
             return
         
-        # Set database path
-        if db_path is None:
-            self._db_path = CHROMA_DB_DIR
-        else:
-            self._db_path = Path(db_path)
         
         # Ensure database directory exists
         self._db_path.mkdir(parents=True, exist_ok=True)
@@ -71,16 +62,15 @@ class ChromaDBClient:
             )
             
             # Create or get the default collection
-            self._create_or_get_collection(collection_name)
+            self._create_or_get_collection(self.collection_name, "")
             
             logger.info(f"ChromaDB client initialized with database at: {self._db_path}")
-            logger.info(f"Default collection: {collection_name}")
             
         except Exception as e:
             logger.error(f"Failed to initialize ChromaDB client: {e}")
             raise
     
-    def _create_or_get_collection(self, collection_name: str) -> chromadb.Collection:
+    def _create_or_get_collection(self, collection_name: str, description_metadata: str) -> chromadb.Collection:
         """
         Create a new collection or get an existing one.
         
@@ -102,14 +92,14 @@ class ChromaDBClient:
                 # Create new collection if it doesn't exist
                 collection = self._client.create_collection(
                 name=collection_name,
-                metadata={"description": "HR Policy QA System embeddings"}
+                metadata={"description": f"{description_metadata}"}
                 )
                 logger.info(f"Created new collection: {collection_name}")
             return collection
         except Exception as e:
             raise RuntimeError(f"Error creating or getting collection {collection_name}: {e}")
     
-    def get_collection(self, collection_name: str = "hr_policy_qa") -> chromadb.Collection:
+    def get_collection(self, collection_name: str) -> chromadb.Collection:
         """
         Get a collection by name, creating it if it doesn't exist.
         
@@ -170,7 +160,7 @@ class ChromaDBClient:
                 pass
             
             # Recreate collection
-            self._create_or_get_collection(collection_name)
+            self._create_or_get_collection(collection_name, "")
             logger.info(f"Reset collection: {collection_name}")
             
         except Exception as e:
@@ -206,14 +196,13 @@ class ChromaDBClient:
     # --- Step 4 helpers: add/upsert convenience methods ---
     def add_documents(
         self,
-        collection_name: str,
         documents: list[str],
         metadatas: Optional[list[dict]] = None,
         embeddings: Optional[list[list[float]]] = None,
         ids: Optional[list[str]] = None,
     ) -> None:
-        """Add documents (and optional embeddings) into a collection."""
-        collection = self.get_collection(collection_name)
+        """Add documents (and optional embeddings) into the instance's collection."""
+        collection = self.get_collection(self.collection_name)
         collection.add(
             documents=documents,
             metadatas=metadatas,
@@ -223,14 +212,13 @@ class ChromaDBClient:
 
     def upsert_documents(
         self,
-        collection_name: str,
         documents: list[str],
         metadatas: Optional[list[dict]] = None,
         embeddings: Optional[list[list[float]]] = None,
         ids: Optional[list[str]] = None,
     ) -> None:
-        """Upsert documents (and optional embeddings) into a collection."""
-        collection = self.get_collection(collection_name)
+        """Upsert documents (and optional embeddings) into the instance's collection."""
+        collection = self.get_collection(self.collection_name)
         collection.upsert(
             documents=documents,
             metadatas=metadatas,
@@ -238,9 +226,9 @@ class ChromaDBClient:
             ids=ids,
         )
 
-    async def getTopNQueryResults(self, n: int, question_embedding, collection_name):
+    async def getTopNQueryResults(self, n: int, question_embedding):
         try:
-            collection = self.get_collection(collection_name)
+            collection = self.get_collection(self.collection_name)
 
             results = collection.query(
                 query_embeddings=[question_embedding.tolist()],
@@ -296,34 +284,22 @@ class ChromaDBClient:
 
         except Exception as e:
             raise RuntimeError(f'Failed to retrieve flattened chunks: {e}')
-        
-# Global singleton instance
-chroma_client = ChromaDBClient()
 
 
-def get_chroma_client() -> ChromaDBClient:
+def get_chroma_client(collection_name: str, db_path: Optional[Path] = None) -> ChromaDBClient:
     """
-    Get the global ChromaDB client instance.
-    
-    Returns:
-        ChromaDBClient singleton instance.
-    """
-    return chroma_client
-
-
-def initialize_chroma_client(db_path: Optional[Path] = None, collection_name: str = "hr_policy_qa") -> ChromaDBClient:
-    """
-    Initialize the global ChromaDB client.
+    Helper function to create and initialize a ChromaDB client instance.
     
     Args:
-        db_path: Path to the ChromaDB database.
-        collection_name: Name of the default collection.
+        collection_name: Name of the collection for this client instance
+        db_path: Optional database path (uses default if not provided)
         
     Returns:
-        Initialized ChromaDBClient instance.
+        Initialized ChromaDBClient instance
     """
-    client = get_chroma_client()
-    client.initialize(db_path, collection_name)
+    if db_path is None:
+        db_path = CHROMA_DB_DIR
+    
+    client = ChromaDBClient(COLLECTION_NAME=collection_name, CHROMA_DB_PATH=db_path)
+    client.initialize()
     return client
-
-
