@@ -37,7 +37,9 @@ def add_cors_headers(response):
 load_dotenv()
 
 # Initialize MerchantQueryingService
-merchant_querying_service = MerchantQueryingService()
+merchant_querying_service = MerchantQueryingService(
+    llm_model_name="openai/gpt-5-nano"
+)
 
 @app.route('/ask', methods=['POST'])
 def ask_merchant_question():
@@ -49,7 +51,10 @@ def ask_merchant_question():
             return jsonify({'error': 'Question is required'}), 400
 
         # Run async function in sync context
-        response = asyncio.run(merchant_querying_service.query(question, language))
+        response = asyncio.run(merchant_querying_service.query(
+            question, 
+            language
+        ))
         return jsonify({'response': response}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500

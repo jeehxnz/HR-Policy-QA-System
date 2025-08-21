@@ -25,7 +25,8 @@ class MerchantQueryingService:
                  bn_collection_name: str = BANLGA_MERCHANT_FAQ_COLLECTION_NAME,
                  bn_sentence_transformer_model_name: str = BANLGA_SENTENCE_TRANSFORMER_MODEL,
                  en_collection_name: str = ENGLISH_MERCHANT_FAQ_COLLECTION_NAME,
-                 en_sentence_transformer_model_name: str = ENGLISH_SENTENCE_TRANSFORMER_MODEL
+                 en_sentence_transformer_model_name: str = ENGLISH_SENTENCE_TRANSFORMER_MODEL,
+                 llm_model_name: str = "openai/gpt-4.1"
                  ):
         
         # English and Bangla Embedding model names and collections
@@ -33,6 +34,7 @@ class MerchantQueryingService:
         self.en_collection_name = en_collection_name
         self.bn_sentence_transformer_model = bn_sentence_transformer_model_name
         self.en_sentence_transformer_model = en_sentence_transformer_model_name
+        self.llm_model_name = llm_model_name
 
         # Initialize English and Bangla Tokenization Services
         self.bn_tokenization_service = TokenizationService(
@@ -74,7 +76,8 @@ class MerchantQueryingService:
         # Create and Initialize LLM service
         self.llm_service = LLMQueryingService(
             SYSTEM_PROMPT=self.SYSTEM_PROMPT,
-            LLM_API_KEY=OPENROUTER_API_KEY
+            LLM_API_KEY=OPENROUTER_API_KEY,
+            LLM_MODEL_NAME= self.llm_model_name
         )
         
         self.llm_service.intiailize()
