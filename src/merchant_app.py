@@ -21,6 +21,8 @@ from services.merchant_querying_service import MerchantQueryingService
 load_dotenv()
 LLM_MODEL_NAME = os.environ.get("OPENROUTER_MODEL")
 
+assert isinstance(LLM_MODEL_NAME, str)
+
 app = Flask(__name__)
 
 # Configure CORS explicitly to avoid browser preflight issues
@@ -49,6 +51,10 @@ merchant_querying_service = MerchantQueryingService(
 def ask_merchant_question():
     try:
         data = request.json
+
+        if not data:
+            return jsonify({'error': 'Sufficient data is not provided in the body'}), 400
+        
         question = data.get('question')
         language = data.get('language')
         if not question:
