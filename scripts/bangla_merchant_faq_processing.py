@@ -39,6 +39,7 @@ async def main():
         chunk_overlap_tokens=50,
     )
     chroma_client = ChromaDBClient(collection_name)
+    chroma_client.initialize()
 
     # Empty out tmp dirs (do not clear UNPROCESSED_FILES_DIR so PDFs remain)
     file_processing_service.clear_tmp_file_dirs(False)
@@ -68,6 +69,9 @@ async def main():
     all_chunks = payload["documents"]
     all_metadatas = payload["metadatas"]
 
+    print('Metadatas')
+    print(all_metadatas[0:5])
+
     # 5) Load embeddings via helper
     embeddings_path = EMBEDDINGS_DIR / f"{collection_name}_embeddings.pt"
     embeddings = tokenization_service.load_embeddings(embeddings_path)
@@ -81,7 +85,6 @@ async def main():
 
     # Add to Chroma via helper
     chroma_client.add_documents(
-        collection_name=collection_name,
         documents=all_chunks,
         metadatas=all_metadatas,
         embeddings=embeddings.tolist(),

@@ -219,6 +219,8 @@ class TokenizationService:
             with open(chunk_file, 'r', encoding='utf-8') as f:
                 chunks = json.load(f)
             all_chunks.extend(chunks)
+
+            # OPPORTUNITY FOR OPTIMIZATION 
             all_metadatas.extend({"source": txt_path.name} for _ in chunks)
 
         return {"documents": all_chunks, "metadatas": all_metadatas}

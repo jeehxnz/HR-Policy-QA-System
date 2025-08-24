@@ -8,20 +8,23 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from services.tokenization_service import TokenizationService
-from services.llm_querying_service import LLMQueryingService
-from lib.chromaDBClient import get_chroma_client
+from services.merchant_querying_service import MerchantQueryingService
+from lib.chromaDBClient import ChromaDBClient
 from config import (
     CHROMA_DB_DIR)
 
 # Load environment variables from .env
 load_dotenv()
-OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
-MERCHANT_FAQ_COLLECTION_NAME = os.environ.get('MERCHANT_FAQ_COLLECTION_NAME')
-BANLGA_SENTENCE_TRANSFORMER_MODEL = os.environ.get('SENTENCE_TRANSFORMER_MODEL')
+OPENROUTER_MODEL = os.environ.get("OPENROUTER_MODEL")
+BANGLA_MERCHANT_FAQ_COLLECTION_NAME = os.environ.get('BANGLA_MERCHANT_FAQ_COLLECTION_NAME')
+BANGLA_SENTENCE_TRANSFORMER_MODEL = os.environ.get('BANGLA_SENTENCE_TRANSFORMER_MODEL')
 
 async def main():
-    collection_name = MERCHANT_FAQ_COLLECTION_NAME
+    collection_name = BANGLA_MERCHANT_FAQ_COLLECTION_NAME
+    sentence_transformer_model_name = BANGLA_SENTENCE_TRANSFORMER_MODEL
+    assert isinstance(sentence_transformer_model_name, str)
+    assert isinstance(collection_name, str)
+    assert isinstance(OPENROUTER_MODEL, str)
 
     SYSTEM_PROMPT = """
                     আপনি একজন সহায়ক অ্যাসিস্ট্যান্ট, যিনি কেবলমাত্র bKash মার্চেন্টদের জন্য কাজ করেন।
@@ -48,38 +51,21 @@ async def main():
                     👉 "অতিরিক্ত সহায়তার জন্য আপনি bKash মার্চেন্ট সাপোর্টের সাথে যোগাযোগ করতে পারেন।"
                     """
 
+    chroma_client = ChromaDBClient(collection_name)
+    chroma_client.initialize()
 
-    llm_service = LLMQueryingService(
-        SYSTEM_PROMPT=SYSTEM_PROMPT,
-        LLM_API_KEY= OPENROUTER_API_KEY
+    question = input("প্রশ্ন করুন: ")
+
+    # Initialize MerchantQueryingService
+    merchant_querying_service = MerchantQueryingService(
+        llm_model_name=OPENROUTER_MODEL
     )
 
-
-    tokenization_service = TokenizationService(
-        model_name=SENTENCE_TRANSFORMER_MODEL
-    )
-    chroma_client = get_chroma_client()
-
-    # Initialize Chroma client (db path + create default collection)
-    chroma_client.initialize(db_path=CHROMA_DB_DIR, collection_name=collection_name)
-
-    question = "লেনদেন হিস্ট্রি কোথায় দেখতে পারবো ?"
-
-    embedded_question = await tokenization_service.embedQuestion(question)
-    chroma_query_results = await chroma_client.getTopNQueryResults(5,embedded_question,collection_name=collection_name)
-    flattened_chunks = await chroma_client.getFlattenedChunks(chroma_query_results=chroma_query_results)
-    llm_context = await tokenization_service.prepareLLMContext(flat_chunks=flattened_chunks)
-
-    # Initialize system prompt messages
-    llm_service.intiailize()
-
-    with open("chunks.txt", "w", encoding="utf-8") as f:
-        f.write(llm_context)
-
-    response_text = await llm_service.apiCallWithContext(llm_context, question=question)
-
-    with open("output.txt", "w", encoding="utf-8") as f:
-        f.write(response_text)
+    response = await merchant_querying_service.query(
+        question=question, 
+        language='bn')
+    
+    print(response)
     
 
 if __name__ == '__main__':
