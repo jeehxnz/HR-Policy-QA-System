@@ -146,6 +146,7 @@ lightweight/
 venv/
 env/
 .venv/ 
+
 .env/
 ENV/
 env.bak/
@@ -223,6 +224,7 @@ cython_debug/
 .pypirc
 
 # Project-specific ignores
+chroma_db/
 chroma_db_backup_20250813_133309
 chroma_db_backup_20250818_163255
 *.pt
