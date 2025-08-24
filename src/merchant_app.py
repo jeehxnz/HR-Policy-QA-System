@@ -17,6 +17,12 @@ sys.path.insert(0, str(project_root))
 
 from services.merchant_querying_service import MerchantQueryingService
 
+# Import Env Variables
+load_dotenv()
+LLM_MODEL_NAME = os.environ.get("OPENROUTER_MODEL")
+
+assert isinstance(LLM_MODEL_NAME, str)
+
 app = Flask(__name__)
 
 # Configure CORS explicitly to avoid browser preflight issues
@@ -37,19 +43,28 @@ def add_cors_headers(response):
 load_dotenv()
 
 # Initialize MerchantQueryingService
-merchant_querying_service = MerchantQueryingService()
+merchant_querying_service = MerchantQueryingService(
+    llm_model_name=LLM_MODEL_NAME
+)
 
 @app.route('/ask', methods=['POST'])
 def ask_merchant_question():
     try:
         data = request.json
+
+        if not data:
+            return jsonify({'error': 'Sufficient data is not provided in the body'}), 400
+        
         question = data.get('question')
         language = data.get('language')
         if not question:
             return jsonify({'error': 'Question is required'}), 400
 
         # Run async function in sync context
-        response = asyncio.run(merchant_querying_service.query(question, language))
+        response = asyncio.run(merchant_querying_service.query(
+            question, 
+            language,
+        ))
         return jsonify({'response': response}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500

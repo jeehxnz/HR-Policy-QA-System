@@ -1,4 +1,9 @@
 import requests, json
+import logging
+
+# Logger Config
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 class LLMQueryingService:
 
@@ -36,6 +41,14 @@ class LLMQueryingService:
        try:
            payload_messages = self.system_messages
 
+           #Choose max tokens based on the model
+           if self.LLM_MODEL_NAME == "openai/gpt-4.1":
+            max_tokens = 300
+           elif self.LLM_MODEL_NAME == "openai/gpt-5-nano":
+            max_tokens = 1000
+           else:
+            max_tokens = 300
+
            if context and context.strip() != "":
              payload_messages.append({"role": "user", "content": f"""
              Answer in {language} language. bn is for bengali. en is for english.
@@ -55,17 +68,32 @@ class LLMQueryingService:
                         "HTTP-Referer": self.FRONTEND_DOMAIN, 
                         "X-Title": "bKash RAG api" 
                      }  
+           if self.LLM_MODEL_NAME == "openai/gpt-5-nano":
+               payload = {
+                   "model": self.LLM_MODEL_NAME,
+                   "messages": payload_messages,
+                   "temperature": 0.0,  # Keep temperature low for factual answers
+                   "reasoning": {"effort": "medium"},
+                   "max_tokens": max_tokens  # Limit response length
+               }
+           else:
+               payload = {
+                   "model": self.LLM_MODEL_NAME,
+                   "messages": payload_messages,
+                   "temperature": 0.0,  # Keep temperature low for factual answers
+                   "max_tokens": max_tokens  # Limit response length
+               }
            
-           payload = {
-                        "model": self.LLM_MODEL_NAME,
-                        "messages": payload_messages,
-                        "temperature": 0.0, # Keep temperature low for factual answers
-                        "max_tokens": 300 # Limit response length
-                     }
-           
+           logger.info(f"Making LLM API Request with model: {self.LLM_MODEL_NAME}")
            response = requests.post(self.LLM_API_BASE_URL, headers=headers, data=json.dumps(payload))
 
+           if(response.status_code == 200):
+            logger.info(f"Successfully retrieved the response from LLM using {self.LLM_MODEL_NAME}")
+
+            # print(response.json())
+
            response.raise_for_status()
+          
 
            llm_api_response = response.json()
 

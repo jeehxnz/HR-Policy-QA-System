@@ -1,0 +1,90 @@
+q: Where can I view my transaction history?
+a: You can view your transaction history in the bKash merchant app from the following places:
+
+- Recent transactions screen: Shows your latest transactions.
+- Transactions screen: Provides detailed information on completed transactions.
+- Transaction summary: Access daily and monthly summaries by tapping on "Transactions" then "Transaction Summary" on the home page.
+
+This allows you to check both recent and past transaction details conveniently.
+
+q: How can I do mobile recharge?
+a: To do a mobile recharge using the bKash merchant app:
+
+1. From the home screen, tap the "Mobile Recharge" feature.
+2. Enter the mobile number you want to recharge.
+3. Select the mobile operator. If you have recharged this number before, you can tap the operator icon above the amount input screen to change the operator.
+4. Enter the recharge amount.
+5. If available, view any special offers by tapping the "My Offer" tab after entering the amount.
+6. Tap "Proceed" to continue.
+7. Confirm the details and enter your bKash PIN to complete the recharge.
+8. You will receive an in-app notification confirming the successful recharge.
+
+If you face any issues or lack the required permission, contact your nearest bKash representative.
+
+q: Is it true that Bangabandhu had six fingers?
+a: I am here to assist with bKash merchant-related questions only. For general or historical inquiries like this, please contact appropriate official sources or information channels.
+
+q: How can I download and install the bKash Merchant App?
+a: To download and install the bKash Merchant App:
+
+1. Go to the Google Play Store on your mobile device.
+2. Search for "bKash Merchant."
+3. Tap the install button.
+4. Once installation is complete, tap open to start using the app.
+
+An internet connection is required to download and use the app.
+
+q: How do I register as a merchant in bKash?
+a: I am sorry, but I did not find information about how to register as a merchant in the provided bKash merchant resources. Please contact your nearest bKash agent or the bKash helpline at 16247 for assistance with merchant registration.
+
+q: How can I collect payments from customers using the bKash Merchant App?
+a: You can collect payments from customers using the bKash Merchant App by following these steps:
+
+- Show your unique merchant QR code to customers for easy payments. To view your QR code, go to the home screen → tap the QR icon → view my QR. You can also download it for later use.
+- Customers can scan your merchant QR code to pay you directly.
+- Alternatively, you can accept payments through multiple counters by creating counter-specific QR codes in the app.
+- You will receive instant payment notifications on your phone as long as you are connected to the internet.
+- You can also search and view transaction details by transaction ID or customer number in the transactions tab.
+
+This makes payment collection simple, quick, and secure.
+
+q: How do I use the 'Request Payment' feature in the Merchant App?
+a: I am sorry, but the provided context does not contain information about the 'Request Payment' feature in the bKash Merchant App. Please contact bKash official support for detailed assistance.
+
+q: How will I get a notification when a customer makes a payment?
+a: You will receive instant payment notifications on your phone's notification bar or lock screen as long as your phone is connected to the internet. Additionally, you can enable voice notifications in the merchant app settings to hear payment notifications in Bangla or English.
+
+q: How can I view daily/monthly sales reports?
+a: You can view daily and monthly sales reports from the bKash merchant app by following these steps:
+
+- For daily summary:
+  1. From the home page of the merchant app, tap on "Transactions."
+  2. Tap on "Transaction Summary."
+  3. Select the "Daily Summary" tab.
+  4. View the summary for today’s date or select a specific date from the calendar to see that day’s summary.
+  5. You can view summaries for up to the last 30 days including today.
+  6. The daily summary includes starting and ending balance, total number and amount of debit and credit transactions.
+  7. Filters like "in," "out," and "fee" can be applied to see specific transaction details.
+
+- For monthly summary:
+  1. From the home page, tap on "Transactions."
+  2. Tap on "Transaction Summary."
+  3. Select the "Monthly Summary" tab.
+  4. View the summary of the current month or select from up to 6 month cards.
+  5. The monthly summary shows starting and ending balance, total number and amount of debit and credit transactions.
+  6. Filters like "in," "out," and "fee" can be applied for detailed views.
+
+You can also check the latest update time for both daily and monthly summaries under the "Last Updated" option.
+
+q: Are there any charges or fees to use the Merchant App?
+a: Yes, there are charges for certain transactions made through the bKash Merchant App, such as merchant payments and send money transactions, as per bKash's policy. However, some features like mobile recharge currently have no charges or commissions. For detailed information on fees, please refer to the specific transaction type within the app or contact your nearest bKash representative.
+
+q: How can I solve the problem if a payment fails?
+a: If a payment fails, no money will be deducted from your merchant account. You will see a message indicating the failure. Additionally, the customer will be notified by SMS about the failed payment. If the amount was deducted despite the failure, it will be refunded to your merchant account within 3 working days. You can also check the latest transaction details in the app to confirm the status. If issues persist, please contact your nearest bKash representative for assistance.
+
+q: Can I transfer money from my bKash Merchant Account to a bank account?
+a: No, currently you cannot transfer money directly from your bKash Merchant Account to a bank account. However, you can transfer money from your merchant account to your own Visa debit card using the "bKash to card" feature in the merchant app. This service is available for Visa debit cards only, and a 1.39% charge applies per transaction. Transfers may take up to 30 minutes if fast fund is enabled on your card, otherwise up to 3 working days. For issues with transfers, contact your card-issuing bank or file a complaint with bKash if unresolved.
+
+q: How can I play games in bKash?
+a: I am sorry, but I cannot provide information about playing games as it is not related to bKash merchant services. For such inquiries, please contact the official bKash support channels.
+
